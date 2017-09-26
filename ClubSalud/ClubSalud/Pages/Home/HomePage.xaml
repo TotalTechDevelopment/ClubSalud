@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClubSalud.Pages.Home.HomePage"
+             xmlns:Bases="clr-namespace:ClubSalud.Bases;assembly=ClubSalud">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
+            </StackLayout.Margin>
+            <Bases:ToolbarNavigateBasePage/>
+            <Frame Padding="0" Margin="10" VerticalOptions="FillAndExpand">
+                <Frame.Content>
+                    <Grid VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="180"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Source="no_image.png" Grid.Row="0" VerticalOptions="Start"/>
+                        <StackLayout Margin="16" VerticalOptions="FillAndExpand" Grid.Row="1">
+                            <Label Text="Nombre de usuario" 
+                                   x:Name="_Name"
+                                   FontSize="20"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="CenterAndExpand"
+                                   TextColor="{StaticResource PrimaryColor}"/>
+                            <StackLayout BackgroundColor="{StaticResource PrimaryColor}"
+                                         HorizontalOptions="FillAndExpand">
+                                <Label Text="Titular"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontSize="18" 
+                                       TextColor="White"/>
+                            </StackLayout>
+                            <StackLayout BackgroundColor="{StaticResource WhiteMoon}"
+                                         HorizontalOptions="FillAndExpand">
+                                <Label Text="Membresia no."
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontSize="15" 
+                                       TextColor="{StaticResource SecondaryColorText}"/>
+                            </StackLayout>
+                            <Label Text="Membresia no." x:Name="_Member" HorizontalOptions="CenterAndExpand" FontSize="15"/>
+                            <StackLayout BackgroundColor="{StaticResource WhiteMoon}"
+                                         HorizontalOptions="FillAndExpand">
+                                <Label Text="Vigencia"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontSize="15" 
+                                       TextColor="{StaticResource SecondaryColorText}"/>
+                            </StackLayout>
+                            <Label Text="01 de enero del 2018" x:Name="_Vigencia" HorizontalOptions="CenterAndExpand" FontSize="15" VerticalOptions="FillAndExpand"/>
+                            <StackLayout BackgroundColor="{StaticResource WhiteMoon}"
+                                         HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                                <Label Text="Dependientes"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontSize="15" 
+                                       TextColor="{StaticResource SecondaryColorText}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" x:Name="_ListDepents"/>
+                        </StackLayout>
+                    </Grid>
+                </Frame.Content>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

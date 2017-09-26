@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ClubSalud.Pages.Session.LogInPage"
+             BackgroundImage="bgClubS.png">
+    <ContentPage.Content>
+        <StackLayout Margin="28,90,28,66">
+            <Image Source="logoLogin.png" WidthRequest="330"
+                   HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label Text="Acceso a Mi Credencial"
+                   FontSize="18"
+                   Margin="0,30,0,10"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            <Frame Padding="0" Margin="0,0,0,20">
+                <Frame.Content>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="mail.png" 
+                               WidthRequest="23" 
+                               HorizontalOptions="Center"
+                               Margin="5,0,0,0"
+                               VerticalOptions="Center"/>
+                        <Entry HorizontalOptions="FillAndExpand" 
+                               x:Name="_EntryUsername"/>
+                    </StackLayout>
+                </Frame.Content>
+            </Frame>
+            <Frame Padding="0" Margin="0,0,0,20">
+                <Frame.Content>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="secure.png"
+                               WidthRequest="23" 
+                               HorizontalOptions="Center" 
+                               Margin="5,0,0,0"
+                               VerticalOptions="Center"/>
+                        <Entry IsPassword="true"
+                               HorizontalOptions="FillAndExpand"
+                               x:Name="_EntryPassword"/>
+                    </StackLayout>
+                </Frame.Content>
+            </Frame>
+            <Image Source="loginBtn.png" x:Name="_BtnLogIn" />
+            <Label x:Name="_LabelErrorLogIn" 
+                   IsVisible="false" 
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,20,0,0"
+                   TextColor="White"/>
+            <Label Text="¿Olvidate tu contraseña?" 
+                   TextColor="White"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="10"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="ClubSalud.Pages.Depedent.DependtsPage"
+             xmlns:Bases="clr-namespace:ClubSalud.Bases;assembly=ClubSalud">
+    <ContentPage.Content>
+        <StackLayout Spacing="0">
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
+            </StackLayout.Margin>
+            <Bases:ToolbarNavigateBasePage/>
+            <Frame Padding="0" Margin="10" VerticalOptions="FillAndExpand">
+                <Frame.Content>
+                    <StackLayout Margin="8">
+                        <StackLayout BackgroundColor="#008dc2" 
+                                         HorizontalOptions="FillAndExpand">
+                                <Label Text="Mis dependientes"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="CenterAndExpand"
+                                       FontSize="18" 
+                                       Margin="5"
+                                       TextColor="White"/>
+                        </StackLayout>
+                        <ListView x:Name="_ListDependts" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowHeight="133" SeparatorVisibility="None" Margin="10,0,10,0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid Margin="0" HorizontalOptions="FillAndExpand" RowSpacing="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="100"/>
+                                                <RowDefinition Height="29"/>
+                                                <RowDefinition Height="1"/>
+                                            </Grid.RowDefinitions>
+                                            <Image Grid.Row="0" Source="{Binding Image}" WidthRequest="100" 
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   VerticalOptions="CenterAndExpand"/>
+                                            <Label Grid.Row="1" Text="{Binding Name}"
+                                                   VerticalOptions="FillAndExpand"
+                                                   HorizontalOptions="CenterAndExpand"/>
+                                            <BoxView BackgroundColor="Silver" Grid.Row="2" HeightRequest="1" HorizontalOptions="FillAndExpand"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </Frame.Content>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
