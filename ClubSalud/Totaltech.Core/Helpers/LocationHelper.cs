@@ -50,7 +50,7 @@ namespace Totaltech.Core.Helpers
 
 			};
 
-			Geolocator.StartListeningAsync(1,1);
+			//Geolocator.StartListeningAsync(1,1);
 		}
 		 
 		const string strGeoCodingUrl = "http://maps.googleapis.com/maps/api/geocode/json?language=es&latlng=";

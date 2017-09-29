@@ -4,7 +4,7 @@ namespace Totaltech.Core.Data.Services
 	public class Configuration
 	{
 
-		static string baseURL = "http://www.totalcase.com.mx/WebApiVREEKAVA6/";
+		static string baseURL = "http://www.totalcase.com.mx/WebApiClubSeguroDEMO2/";
 
 		public static string BaseURL
 		{

@@ -22,7 +22,7 @@ namespace ClubSalud.Pages.Master
 		{
 			_LabelNombre.Text = Helpers.UserHelper.CurrentUser.Nombre_del_Titular;
 			menuItems = new ObservableCollection<ItemMenu>();
-			string[] titles = new string[] { "Inicio", "Directorio", "Mis pendientes", "Salir" };
+			string[] titles = new string[] { "Inicio", "Directorio", "Mis dependientes", "Salir" };
 			string[] icons = new string[] { "home.png", "book.png", "users.png", "logout.png" };
 			int i = 0;
 			foreach (ItemPageMenu page in Enum.GetValues(typeof(ItemPageMenu)))

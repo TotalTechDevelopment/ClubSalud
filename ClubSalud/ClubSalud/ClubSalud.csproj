@@ -32,7 +32,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Services\DB\Session.cs" />
+    <Compile Include="LocalServices\DB\Session.cs" />
     <Compile Include="Providers\IProgress.cs" />
     <Compile Include="Pages\Master\MasterPage.cs" />
     <Compile Include="Managers\NavigationManager.cs" />
@@ -61,6 +61,9 @@
     <Compile Include="Pages\Home\ProfileDependetPage.xaml.cs">
       <DependentUpon>ProfileDependetPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\UserHelper.cs" />
+    <Compile Include="Pages\BaseContentPage.cs" />
+    <Compile Include="Providers\IImageProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -84,6 +87,18 @@
     <Reference Include="Realm.Sync">
       <HintPath>..\packages\Realm.1.6.0\lib\portable-net45+sl5+wp8+wpa81+win8+monoandroid+Xamarin.iOS10+monotouch+Xamarin.Mac\Realm.Sync.dll</HintPath>
     </Reference>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.18\lib\portable-net45+win8+wpa81+wp8\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.18\lib\portable-net45+win8+wpa81+wp8+netstandard1.0\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.18\lib\portable-net45+win8+wpa81+wp8+netstandard1.0\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -94,7 +109,7 @@
     <Folder Include="Utils\" />
     <Folder Include="Pages\" />
     <Folder Include="Models\" />
-    <Folder Include="Services\" />
+    <Folder Include="LocalServices\" />
     <Folder Include="Helpers\" />
     <Folder Include="Pages\Depedent\" />
     <Folder Include="Pages\Directory\" />
