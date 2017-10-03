@@ -13,6 +13,7 @@ using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 using ClubSalud.Droid;
 using ClubSalud.Pages;
+using ClubSalud;
 
 [assembly: ExportRenderer(typeof(BaseContentPage), typeof(BasePageRenderer))]
 namespace ClubSalud.Droid

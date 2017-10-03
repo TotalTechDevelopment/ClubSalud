@@ -112,43 +112,68 @@ namespace ClubSalud
                     var inputFile = new InputFile();
                     inputFile.FileArray = bytes;
                     inputFile.FileName = DependencyService.Get<IImageProcessor>().ImageFileName(ImagePath);
-                    var result = await App.CurrentApp.Services.PostFotos(new List<InputFile>()
-                            {
-                                inputFile
-                            });
-                    TTArchivo n = null;
-                    if (result != null && result.Count == 1)
+
+                    var image = new SpartanFile
+                    {
+                        Description = inputFile.FileName,
+                        File = bytes,
+                        File_Size = bytes.Length
+                    };
+                    var folio = await App.CurrentApp.Services.PostObjectToTable<SpartanFile>(image, SpartanFile.TABLE_NAME);
+
+                    DependencyService.Get<IProgress>().Dismiss();
+
+                    if (folio != -1)
                     {
                         imageUploaded = true;
-
-                        n = result[0];
-                        //foreach (var n in result)
-                        //{
-                        if (n.ArchivoURL != null)
-                        {
-                            //var str = n.ArchivoURL;
-                            //str = str.Replace(Configuration.BaseReplaceUrl, Configuration.BaseURL + "Uploads/TTArchivos/");
-                            //n.ArchivoURL = str;
-                        }
-
-
-                        if (!_ttarchivosDict.ContainsKey(n.Folio))
-                            _ttarchivosDict.Add(n.Folio, n);
-
-                        System.Diagnostics.Debug.WriteLine("{0}", n.Folio);
 
                         if (_fotosDictionary.ContainsKey(imageView))
                         {
                             _fotosDictionary.Remove(imageView);
                         }
 
-                        _fotosDictionary.Add(imageView, n.Folio);
+                        _fotosDictionary.Add(imageView, folio);
 
-                        //}
-                    }
+                        ImagesUploaded(folio);
+					}
 
-                    if (ImagesUploaded != null && n != null)
-                        ImagesUploaded(n.Folio);
+                    //var result = await App.CurrentApp.Services.PostFotos(new List<InputFile>()
+                    //        {
+                    //            inputFile
+                    //        });
+                    //TTArchivo n = null;
+                    //if (result != null && result.Count == 1)
+                    //{
+                    //    imageUploaded = true;
+
+                    //    n = result[0];
+                    //    //foreach (var n in result)
+                    //    //{
+                    //    if (n.ArchivoURL != null)
+                    //    {
+                    //        //var str = n.ArchivoURL;
+                    //        //str = str.Replace(Configuration.BaseReplaceUrl, Configuration.BaseURL + "Uploads/TTArchivos/");
+                    //        //n.ArchivoURL = str;
+                    //    }
+
+
+                    //    if (!_ttarchivosDict.ContainsKey(n.Folio))
+                    //        _ttarchivosDict.Add(n.Folio, n);
+
+                    //    System.Diagnostics.Debug.WriteLine("{0}", n.Folio);
+
+                    //    if (_fotosDictionary.ContainsKey(imageView))
+                    //    {
+                    //        _fotosDictionary.Remove(imageView);
+                    //    }
+
+                    //    _fotosDictionary.Add(imageView, n.Folio);
+
+                    //    //}
+                    //}
+
+                    //if (ImagesUploaded != null && n != null)
+                    //ImagesUploaded(n.Folio);
 
                 }
             }

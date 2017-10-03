@@ -27,31 +27,6 @@ namespace ClubSalud
             ListaDependientes = new List<DetalleDeDependientesDeUsuario>();
             InitializeComponent();
             InitServices();
-            InitListaDependientes();
-        }
-
-        void InitListaDependientes()
-        {
-            ListaDependientes.Add(new DetalleDeDependientesDeUsuario
-            {
-                Nombre = "Alejandro Pérez",
-                Foto = "https://placeimg.com/640/480/any",
-            });
-            ListaDependientes.Add(new DetalleDeDependientesDeUsuario
-            {
-                Nombre = "Moises Castillo",
-                Foto = "https://placeimg.com/640/480/any",
-            });
-            ListaDependientes.Add(new DetalleDeDependientesDeUsuario
-            {
-                Nombre = "Josefina Marquez",
-                Foto = "https://placeimg.com/640/480/any",
-            });
-            ListaDependientes.Add(new DetalleDeDependientesDeUsuario
-            {
-                Nombre = "Raquel Gonzales",
-                Foto = "https://placeimg.com/640/480/any",
-            });
         }
 
         void InitServices()

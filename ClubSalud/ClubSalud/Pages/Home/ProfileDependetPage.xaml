@@ -30,7 +30,8 @@
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"
                                        FontSize="18" 
-                                       TextColor="White"/>
+                                       TextColor="White"
+                                        x:Name="_DependentName"/>
                             </StackLayout>
                             <StackLayout BackgroundColor="{StaticResource WhiteMoon}"
                                          HorizontalOptions="FillAndExpand">
@@ -38,9 +39,10 @@
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalOptions="CenterAndExpand"
                                        FontSize="15" 
-                                       TextColor="{StaticResource SecondaryColorText}"/>
+                                       TextColor="{StaticResource SecondaryColorText}"
+                                        />
                             </StackLayout>
-                            <Label Text="Membresia no." HorizontalOptions="CenterAndExpand" FontSize="15"/>
+                            <Label x:Name="_Member" HorizontalOptions="CenterAndExpand" FontSize="15"/>
                             <StackLayout BackgroundColor="{StaticResource WhiteMoon}"
                                          HorizontalOptions="FillAndExpand">
                                 <Label Text="Vigencia"
@@ -49,7 +51,7 @@
                                        FontSize="15" 
                                        TextColor="{StaticResource SecondaryColorText}"/>
                             </StackLayout>
-                            <Label Text="01 de enero del 2018" 
+                            <Label x:Name="_Vigencia"
                                    HorizontalOptions="CenterAndExpand" 
                                    FontSize="15"
                                    VerticalOptions="FillAndExpand"/>

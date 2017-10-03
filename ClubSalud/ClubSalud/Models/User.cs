@@ -37,7 +37,7 @@ namespace ClubSalud.Models.ClubSalud
 		public string Apellido_Paterno { get; set; }
 		public string Apellido_Materno { get; set; }
 		public object Nombre_Completo { get; set; }
-		public object Foto_de_Perfil { get; set; }
+		public int? Foto_de_Perfil { get; set; }
 		public string Numero_de_Seguro { get; set; }
 		public string Paquete { get; set; }
 		public string RFC { get; set; }
@@ -73,6 +73,14 @@ namespace ClubSalud.Models.ClubSalud
 		public EstatusEstatusDeUsuario Estatus_Estatus_de_Usuario { get; set; }
 		public SpartanIDSpartanUser SpartanID_Spartan_User { get; set; }
 		public int Id { get; set; }
+
+        public string VigenciaFormatted
+        {
+            get
+            {
+                return Vigencia.ToString("d");
+            }
+        }
 	}
 
 	public class UserPagingModel

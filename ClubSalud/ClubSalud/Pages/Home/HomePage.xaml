@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<local:BaseContentPage xmlns:local="clr-namespace:ClubSalud" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ClubSalud.HomePage" xmlns:Bases="clr-namespace:ClubSalud.Bases;assembly=ClubSalud" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+<local:BaseContentPage xmlns:local="clr-namespace:ClubSalud" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="ClubSalud.HomePage" xmlns:Bases="clr-namespace:ClubSalud.Bases;assembly=ClubSalud" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" >
     <local:BaseContentPage.Content>
         <StackLayout Spacing="0">
             <StackLayout.Margin>
@@ -39,7 +39,9 @@
                             <StackLayout BackgroundColor="{StaticResource WhiteMoon}" HorizontalOptions="FillAndExpand" VerticalOptions="End">
                                 <Label Text="Dependientes" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" TextColor="{StaticResource SecondaryColorText}" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" x:Name="_ListDepents" />
+                            <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal" x:Name="_ListDepents" HorizontalOptions="FillAndExpand" />
+                            </ScrollView>
                         </StackLayout>
                     </Grid>
                 </Frame.Content>
