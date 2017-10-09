@@ -9,6 +9,7 @@
                 <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
             </StackLayout.Margin>
             <Bases:ToolbarNavigateBasePage/>
+            <WebView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="http://www.clubsaludfamiliar.com.mx/index.php/medicos"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

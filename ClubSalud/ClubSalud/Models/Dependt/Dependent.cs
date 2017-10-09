@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace ClubSalud
@@ -20,6 +21,9 @@ namespace ClubSalud
 		public object Usuario_Registro_de_Usuario { get; set; }
 		public object Foto_Spartane_File { get; set; }
 		public int? Id { get; set; }
+
+        [JsonIgnore]
+        public string FotoUrl { set; get; }
 	}
 
 	public class DependientePagingModel

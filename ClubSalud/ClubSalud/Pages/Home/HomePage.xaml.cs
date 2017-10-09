@@ -65,6 +65,7 @@ namespace ClubSalud
                 if (resp != null && resp.Detalle_de_Dependientes_de_Usuarios.Count > 0)
                 {
                     ListaDependientes = resp.Detalle_de_Dependientes_de_Usuarios;
+                    Helpers.DependentHelper.ListaDependientes = ListaDependientes;
 
                     PopulatingDependent();
                 }
@@ -135,6 +136,11 @@ namespace ClubSalud
                 if (dependiente.Foto != null)
                 {
                     userImage = await App.CurrentApp.Services.GetImage((int) dependiente.Foto);
+                    ListaDependientes.Where(x => x.Clave.Equals(dependiente.Clave)).FirstOrDefault().FotoUrl = userImage;
+                }
+                else
+                {
+                    ListaDependientes.Where(x => x.Clave.Equals(dependiente.Clave)).FirstOrDefault().FotoUrl = "no_image.png";
                 }
 
                 var image = new CachedImage()
@@ -146,8 +152,8 @@ namespace ClubSalud
                     CacheDuration = TimeSpan.FromDays(30),
                     DownsampleToViewSize = true,
                     TransparencyEnabled = false,
-                    ErrorPlaceholder = string.IsNullOrEmpty(userImage)? "no_image.png" : userImage,
-                    //Source = !string.IsNullOrEmpty(dependiente.Foto) ? dependiente.Foto : "no_image.png"
+                    //ErrorPlaceholder = string.IsNullOrEmpty(userImage)? "no_image.png" : userImage,
+                    Source = !string.IsNullOrEmpty(userImage) ? userImage : "no_image.png"
                 };
                 image.Transformations.Add(new CircleTransformation());
 
@@ -173,7 +179,10 @@ namespace ClubSalud
 
 				if (dependent != null)
 				{
-					Helpers.DependentHelper.CurrentDependent = dependent;
+                    Helpers.DependentHelper.CurrentDependent = dependent;
+                    var dependetPosition = ListaDependientes.IndexOf(dependent);
+                    Helpers.DependentHelper.CurrentDependentPosition = dependetPosition;
+                    
 					navigation.NavigatePages(ItemPage.ProfileDependent);
 				}
             }
@@ -190,7 +199,6 @@ namespace ClubSalud
             {
 				TakePictureActionSheet(_profileImage);
             }
-           
         }
     }
 }

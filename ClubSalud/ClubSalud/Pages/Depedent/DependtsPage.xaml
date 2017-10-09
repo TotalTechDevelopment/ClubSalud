@@ -22,7 +22,7 @@
                                                 <RowDefinition Height="29" />
                                                 <RowDefinition Height="1" />
                                             </Grid.RowDefinitions>
-                                            <ffimageloading:CachedImage Grid.Row="0" Source="{Binding Foto}" WidthRequest="100" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                            <ffimageloading:CachedImage Grid.Row="0" Source="{Binding FotoUrl}" WidthRequest="100" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                 <ffimageloading:CachedImage.Transformations>
                                                     <fftransformations:CircleTransformation />
                                                 </ffimageloading:CachedImage.Transformations>

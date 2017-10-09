@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<local:BaseContentPage xmlns:local="clr-namespace:ClubSalud" xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="ClubSalud.Pages.Home.ProfileDependetPage"
              Title="Perfil Dependiente"
-             xmlns:Bases="clr-namespace:ClubSalud.Bases;assembly=ClubSalud">
-    <ContentPage.Content>
+             xmlns:Bases="clr-namespace:ClubSalud.Bases;assembly=ClubSalud"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
+    <local:BaseContentPage.Content>
         <StackLayout Spacing="0">
             <StackLayout.Margin>
                 <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
@@ -17,7 +18,16 @@
                             <RowDefinition Height="180"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Image Source="no_image.png" Grid.Row="0" VerticalOptions="Start"/>
+                        <Grid>
+                            <ffimageloading:CachedImage x:Name="_profileImage" Source="no_image.png" Grid.Row="0" VerticalOptions="Start">
+                                <ffimageloading:CachedImage.Transformations>
+                                    <fftransformations:CircleTransformation />
+                                </ffimageloading:CachedImage.Transformations>
+                            </ffimageloading:CachedImage>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ChangePicture" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
                         <StackLayout Margin="16" VerticalOptions="FillAndExpand" Grid.Row="1">
                             <Label Text="Nombre del dependiente" 
                                    FontSize="20"
@@ -56,13 +66,21 @@
                                    FontSize="15"
                                    VerticalOptions="FillAndExpand"/>
                             <StackLayout Orientation="Horizontal" Spacing="0" VerticalOptions="End">
-                                <Image Source="backBtn" WidthRequest="160" HorizontalOptions="CenterAndExpand"/>
-                                <Image Source="nextBtn" WidthRequest="160" HorizontalOptions="CenterAndExpand"/>
+                                <Image x:Name="_BackButton" Source="backBtn" WidthRequest="160" HorizontalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="BackClicked"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image x:Name="_NextButton" Source="nextBtn" WidthRequest="160" HorizontalOptions="CenterAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="NextClicked"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </StackLayout>
                         </StackLayout>
                     </Grid>
                 </Frame.Content>
             </Frame>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </local:BaseContentPage.Content>
+</local:BaseContentPage>
