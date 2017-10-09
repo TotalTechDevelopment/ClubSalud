@@ -21,6 +21,7 @@ namespace ClubSalud
         public static User CurrentUser { get; set; }
         public Services Services { get; set; }
         public List<DetalleDeDependientesDeUsuario> ListaDependientes { set; get; }
+        public Realm RealmInstance { get; set; }
 
         public App()
         {
@@ -33,10 +34,39 @@ namespace ClubSalud
         {
             CurrentApp = this;
             Services = new Services();
+
+            RealmConfiguration realmConfiguration = RealmConfiguration.DefaultConfiguration;
+            try
+            {
+                RealmInstance = Realm.GetInstance();
+            }
+            catch (RealmMigrationNeededException e)
+            {
+                try
+                {
+                    Realm.DeleteRealm(realmConfiguration);
+                    //Realm file has been deleted.
+                    RealmInstance = Realm.GetInstance();
+                }
+                catch (Exception ex)
+                {
+                    //throw ex;
+                }
+            }
+
             NavigatorManager = new NavigationManager();
-            CurrentUser = new User();
+            //CurrentUser = new User();
             InitRealmServices();
-            MainPage = new LogInPage();
+            var user = Helpers.UserHelper.CurrentUser();
+            if (user == null)
+            {
+                MainPage = new LogInPage();
+            }
+            else
+            {
+                MainPage = new MasterPage();
+            }
+            
         }
 
         void InitRealmServices()

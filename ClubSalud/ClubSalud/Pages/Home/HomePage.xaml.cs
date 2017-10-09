@@ -58,7 +58,7 @@ namespace ClubSalud
             {
                 DependencyService.Get<IProgress>().ShowProgress("Actualizando información");
 
-                string where = "Detalle_de_Dependientes_de_Usuario.Usuario='" + Helpers.UserHelper.CurrentUser.Folio + "'";
+                string where = "Detalle_de_Dependientes_de_Usuario.Usuario='" + Helpers.UserHelper.CurrentUser().Folio + "'";
                 var resp = await App.CurrentApp.Services.ListaSelAll<DependientePagingModel>(DetalleDeDependientesDeUsuario.TABLE_NAME, 0, 1000, where);
 
 
@@ -86,7 +86,7 @@ namespace ClubSalud
             {
                 DependencyService.Get<IProgress>().ShowProgress("Actualizando fotografía");
 
-                var user = Helpers.UserHelper.CurrentUser;
+                var user = Helpers.UserHelper.CurrentUser();
                 user.Foto_de_Perfil = folio;
 
                 var resp = await App.CurrentApp.Services.PutObjectToTable<User>(user, user.Folio + "", User.TABLE_NAME);
@@ -117,9 +117,9 @@ namespace ClubSalud
             _Vigencia.Text = App.CurrentUser.VigenciaFormatted;
 
             var image = "";
-            if (Helpers.UserHelper.CurrentUser.Foto_de_Perfil != null)
+            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != null)
             {
-                image = await  App.CurrentApp.Services.GetImage((int) Helpers.UserHelper.CurrentUser.Foto_de_Perfil);
+                image = await  App.CurrentApp.Services.GetImage((int) Helpers.UserHelper.CurrentUser().Foto_de_Perfil);
                 _profileImage.Source = image;
             }
         }
@@ -195,7 +195,7 @@ namespace ClubSalud
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            if (Helpers.UserHelper.CurrentUser.Foto_de_Perfil == null)
+            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil == null)
             {
 				TakePictureActionSheet(_profileImage);
             }

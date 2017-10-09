@@ -27,7 +27,7 @@ namespace ClubSalud.Managers
                     NavigateMaster( new DirectoryPage());
                     break;
                 case ItemPageMenu.Exit:
-                    Helpers.UserHelper.CurrentUser = null;
+                    Helpers.UserHelper.Logout();
                     App.CurrentApp.MainPage = new LogInPage();
                     break;
             }

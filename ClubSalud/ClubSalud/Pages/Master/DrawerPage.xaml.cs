@@ -43,7 +43,7 @@ namespace ClubSalud.Pages.Master
             {
                 DependencyService.Get<IProgress>().ShowProgress("Actualizando fotografía");
 
-                var user = Helpers.UserHelper.CurrentUser;
+                var user = Helpers.UserHelper.CurrentUser();
                 user.Foto_de_Perfil = folio;
 
                 var resp = await App.CurrentApp.Services.PutObjectToTable<User>(user, user.Folio + "", User.TABLE_NAME);
@@ -69,9 +69,9 @@ namespace ClubSalud.Pages.Master
 
         void LoadMenu()
 		{
-			_LabelNombre.Text = Helpers.UserHelper.CurrentUser.Nombre_del_Titular;
+			_LabelNombre.Text = Helpers.UserHelper.CurrentUser().Nombre_del_Titular;
 
-            if (Helpers.UserHelper.CurrentUser.Foto_de_Perfil != null)
+            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != null)
             {
                 LoadUserPhoto();
             }
@@ -109,7 +109,7 @@ namespace ClubSalud.Pages.Master
         {
             try
             {
-                var userImage = await App.CurrentApp.Services.GetImage((int) Helpers.UserHelper.CurrentUser.Foto_de_Perfil);
+                var userImage = await App.CurrentApp.Services.GetImage((int) Helpers.UserHelper.CurrentUser().Foto_de_Perfil);
                 _profileImage.Source = userImage;
             }
             catch (Exception ex)
@@ -120,7 +120,7 @@ namespace ClubSalud.Pages.Master
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            if (Helpers.UserHelper.CurrentUser.Foto_de_Perfil == null)
+            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil == null)
             {
                 TakePictureActionSheet(_profileImage);
             }

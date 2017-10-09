@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Xamarin.Forms.2.4.0.282\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.282\build\netstandard1.0\Xamarin.Forms.props')" />
   <PropertyGroup>
@@ -80,6 +80,24 @@
     <CodesignProvision>EdgarAdhoc</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.20\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.20\lib\Xamarin.iOS10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Touch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.20\lib\Xamarin.iOS10\FFImageLoading.Forms.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.20\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.20\lib\Xamarin.iOS10\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.6.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.6.0\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -114,15 +132,6 @@
     <Reference Include="Xamarin.Mobile">
       <HintPath>..\Components\xamarin.mobile-0.7.7\lib\ios-unified\Xamarin.Mobile.dll</HintPath>
     </Reference>
-    <Reference Include="FFImageLoading">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.19\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Platform">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.19\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Transformations">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.19\lib\Xamarin.iOS10\FFImageLoading.Transformations.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\packages\Xamarin.Forms.2.4.0.282\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
@@ -135,17 +144,8 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.4.0.282\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="FFImageLoading.Forms">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.19\lib\Xamarin.iOS10\FFImageLoading.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Forms.Touch">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.19\lib\Xamarin.iOS10\FFImageLoading.Forms.Touch.dll</HintPath>
-    </Reference>
     <Reference Include="HorizontalList">
       <HintPath>..\packages\HorizontalListView1.1.1.1.0\lib\HorizontalList.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.5.5\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -166,14 +166,12 @@
       <InProject>false</InProject>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Renders\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Xamarin.Forms.2.4.0.282\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.282\build\netstandard1.0\Xamarin.Forms.props')" />
   <PropertyGroup>
@@ -39,6 +39,24 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.20\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.20\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Forms.Droid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.20\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.20\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Transformations, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.20\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.6.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.6.0\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -121,15 +139,6 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="FFImageLoading">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.19\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Platform">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.2.19\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Transformations">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Transformations.2.2.19\lib\MonoAndroid10\FFImageLoading.Transformations.dll</HintPath>
-    </Reference>
     <Reference Include="FormsViewGroup">
       <HintPath>..\packages\Xamarin.Forms.2.4.0.282\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>
@@ -145,17 +154,8 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.4.0.282\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="FFImageLoading.Forms">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.19\lib\MonoAndroid10\FFImageLoading.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="FFImageLoading.Forms.Droid">
-      <HintPath>..\packages\Xamarin.FFImageLoading.Forms.2.2.19\lib\MonoAndroid10\FFImageLoading.Forms.Droid.dll</HintPath>
-    </Reference>
     <Reference Include="HorizontalList">
       <HintPath>..\packages\HorizontalListView1.1.1.1.0\lib\HorizontalList.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.5.5\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +178,7 @@
     <Compile Include="MainApplication.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />

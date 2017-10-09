@@ -59,7 +59,7 @@ namespace ClubSalud.Pages.Depedent
             {
                 DependencyService.Get<IProgress>().ShowProgress("Actualizando información");
 
-                string where = "Detalle_de_Dependientes_de_Usuario.Usuario='" + Helpers.UserHelper.CurrentUser.Folio + "'";
+                string where = "Detalle_de_Dependientes_de_Usuario.Usuario='" + Helpers.UserHelper.CurrentUser().Folio + "'";
                 var resp = await App.CurrentApp.Services.ListaSelAll<DependientePagingModel>(DetalleDeDependientesDeUsuario.TABLE_NAME, 0, 1000, where);
 
 

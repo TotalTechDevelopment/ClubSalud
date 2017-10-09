@@ -51,8 +51,8 @@ namespace ClubSalud.Pages.Session
 					{
 						if (res.Registro_de_Usuarios[0].Contrasena.Equals(_EntryPassword.Text))
 						{
-							App.CurrentUser = res.Registro_de_Usuarios.FirstOrDefault();
-                            Helpers.UserHelper.CurrentUser = App.CurrentUser;
+							var user = res.Registro_de_Usuarios.FirstOrDefault();
+                            Helpers.UserHelper.SaveUserInfo(user);
 							App.CurrentApp.MainPage = new MasterPage();
 						}
 						else
