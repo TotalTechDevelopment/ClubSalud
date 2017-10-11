@@ -9,42 +9,39 @@ namespace ClubSalud.Helpers
     {
         public static void SaveUserInfo(User user)
         {
-            /**
+            
             try
             {
                 var realm = App.CurrentApp.RealmInstance;
 
-                realm.Write(() =>
+                var users = realm.All<User>().ToList();
+                if (users.Count == 0)
                 {
-                    var users = realm.All<User>().ToList();
-                    if (users.Count == 0)
+                    realm.Write(() =>
                     {
-                        realm.Write(() =>
-                        {
-                            //var newUser = new User();
-                            //newUser = user;
+                        //var newUser = new User();
+                        //newUser = user;
 
-                            //realm.Add(newUser);
-                        });
-                    }
-                    else
+                        //realm.Add(newUser);
+                    });
+                }
+                else
+                {
+                    realm.Write(() =>
                     {
-                        realm.Write(() =>
-                        {
-                            //var actualUser = users.Last();
-                            //actualUser = user;
-                        });
+                        //var actualUser = users.Last();
+                        //actualUser = user;
+                    });
 
-                    }
-                });
-                
+                }
+
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
-        **/
-            App.CurrentUser = user;
+        
+           // App.CurrentUser = user;
         }
 
         public static User CurrentUser()
