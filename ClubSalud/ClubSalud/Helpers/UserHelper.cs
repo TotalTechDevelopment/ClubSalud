@@ -1,7 +1,7 @@
 ﻿using System;
 using ClubSalud.Models.ClubSalud;
-using Realms;
 using System.Linq;
+using ClubSalud.DB;
 
 namespace ClubSalud.Helpers
 {
@@ -9,51 +9,69 @@ namespace ClubSalud.Helpers
     {
         public static void SaveUserInfo(User user)
         {
-            
             try
             {
-                var realm = App.CurrentApp.RealmInstance;
-
-                var users = realm.All<User>().ToList();
-                if (users.Count == 0)
-                {
-                    realm.Write(() =>
-                    {
-                        //var newUser = new User();
-                        //newUser = user;
-
-                        //realm.Add(newUser);
-                    });
-                }
-                else
-                {
-                    realm.Write(() =>
-                    {
-                        //var actualUser = users.Last();
-                        //actualUser = user;
-                    });
-
-                }
-
+                var dbConnection = new ClubSaludDatabase();
+                dbConnection.AddUser(user);
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
-        
-           // App.CurrentUser = user;
         }
 
         public static User CurrentUser()
         {
-            /**
             try
             {
-                var realm = Realm.GetInstance(Realms.RealmConfiguration.DefaultConfiguration);
+                var dbConnection = new ClubSaludDatabase();
+                var user = dbConnection.GetCurrentUser();
 
-                var user = realm.All<User>().FirstOrDefault();
+                var actualUser = new User();
+                actualUser.Folio = user.Folio;
+                actualUser.Fecha_de_Registro = user.Fecha_de_Registro;
+                actualUser.Hora_de_Registro = user.Hora_de_Registro;
+                actualUser.Nombre = user.Nombre;
+                actualUser.Apellido_Paterno = user.Apellido_Paterno;
+                actualUser.Apellido_Materno = user.Apellido_Materno;
+                actualUser.Nombre_Completo = user.Nombre_Completo;
+                actualUser.Foto_de_Perfil = user.Foto_de_Perfil;
+                actualUser.Numero_de_Seguro = user.Numero_de_Seguro;
+                actualUser.Paquete = user.Paquete;
+                actualUser.RFC = user.RFC;
+                actualUser.Sexo = user.Sexo;
+                actualUser.Telefono = user.Telefono;
+                actualUser.Email = user.Email;
+                actualUser.Codigo_Postal = user.Codigo_Postal;
+                actualUser.Colonia = user.Colonia;
+                actualUser.Calle = user.Calle;
+                actualUser.Numero_Exterior = user.Numero_Exterior;
+                actualUser.Numero_Interior = user.Numero_Interior;
+                actualUser.Entre_Calles = user.Entre_Calles;
+                actualUser.Estatus = user.Estatus;
+                actualUser.Vigencia = user.Vigencia;
+                actualUser.Clave_de_Acceso = user.Clave_de_Acceso;
+                actualUser.Contrasena = user.Contrasena;
+                actualUser.SpartanID = user.SpartanID;
+                actualUser.Nombre_del_Titular = user.Nombre_del_Titular;
+                actualUser.Apellido_Paterno_del_Titular = user.Apellido_Paterno_del_Titular;
+                actualUser.Apellido_Materno_del_Titular = user.Apellido_Materno_del_Titular;
+                actualUser.Edad_del_Titular = user.Edad_del_Titular;
+                actualUser.Sexo_del_Titular = user.Sexo_del_Titular;
+                actualUser.Nombre_de_Contacto = user.Nombre_de_Contacto;
+                actualUser.Telefono_Entrega = user.Telefono_Entrega;
+                actualUser.Email_Entrega = user.Email_Entrega;
+                actualUser.CP_Entrega = user.CP_Entrega;
+                actualUser.Colonia_Entrega = user.Colonia_Entrega;
+                actualUser.Calle_Entrega = user.Calle_Entrega;
+                actualUser.Num_Ext_Entrega = user.Num_Ext_Entrega;
+                actualUser.Num_Int_Entrega = user.Num_Int_Entrega;
+                actualUser.Entre_Calles_Entrega = user.Entre_Calles_Entrega;
+                actualUser.Foto_de_Perfil_Spartane_File = user.Foto_de_Perfil_Spartane_File;
 
-                return user;
+                App.CurrentUser = actualUser;
+
+                return App.CurrentUser;
             }
             catch (Exception ex)
             {
@@ -61,24 +79,25 @@ namespace ClubSalud.Helpers
 
                 return null;
             }
-    **/
-            return App.CurrentUser;
         }
 
-        public static void Logout()
+        public static void UpdateUser(User user)
         {
-            /**
             try
             {
-                var realm = Realm.GetInstance(Realms.RealmConfiguration.DefaultConfiguration);
-
-                realm.RemoveAll<User>();
+                var dbConnection = new ClubSaludDatabase();
+                dbConnection.UpdateUser(user);
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
-    **/
+        }
+
+        public static void Logout()
+        {
+            var dbConnection = new ClubSaludDatabase();
+            dbConnection.DeleteUser(App.CurrentUser.Folio);
             App.CurrentUser = null;
         }
     }

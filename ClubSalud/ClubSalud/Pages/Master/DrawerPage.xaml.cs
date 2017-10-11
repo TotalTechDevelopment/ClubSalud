@@ -18,6 +18,12 @@ namespace ClubSalud.Pages.Master
 		{
 			InitializeComponent();
 
+            MessagingCenter.Subscribe<HomePage>(this, "UpdateUserInfo", (sender) =>
+            {
+                _LabelNombre.Text = Helpers.UserHelper.CurrentUser().Nombre_del_Titular;
+                LoadUserPhoto();
+            });
+
             ImageSourceChanged = async () =>
             {
                 if (LastView is FFImageLoading.Forms.CachedImage)
@@ -45,6 +51,7 @@ namespace ClubSalud.Pages.Master
 
                 var user = Helpers.UserHelper.CurrentUser();
                 user.Foto_de_Perfil = folio;
+                Helpers.UserHelper.UpdateUser(user);
 
                 var resp = await App.CurrentApp.Services.PutObjectToTable<User>(user, user.Folio + "", User.TABLE_NAME);
 
@@ -71,7 +78,7 @@ namespace ClubSalud.Pages.Master
 		{
 			_LabelNombre.Text = Helpers.UserHelper.CurrentUser().Nombre_del_Titular;
 
-            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != null)
+            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != -1)
             {
                 LoadUserPhoto();
             }
@@ -120,7 +127,7 @@ namespace ClubSalud.Pages.Master
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil == null)
+            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil == -1)
             {
                 TakePictureActionSheet(_profileImage);
             }

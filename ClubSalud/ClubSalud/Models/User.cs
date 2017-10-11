@@ -1,26 +1,25 @@
 ﻿using Newtonsoft.Json;
-using Realms;
 using System;
 using System.Collections.Generic;
 
 namespace ClubSalud.Models.ClubSalud
 {
    
-	public class EstatusEstatusDeUsuario : RealmObject
+	public class EstatusEstatusDeUsuario
     {
 		public int Clave { get; set; }
 		public string Descripcion { get; set; }
 		public int Id { get; set; }
 	}
 
-	public class SpartanIDSpartanUser : RealmObject
+	public class SpartanIDSpartanUser
     {
 		public int Id_User { get; set; }
 		public string Name { get; set; }
 		public string Role { get; set; }
 	}
 
-	public class User : RealmObject
+	public class User
 	{
         public static string TABLE_NAME = "Registro_de_Usuario";
 
@@ -64,14 +63,11 @@ namespace ClubSalud.Models.ClubSalud
 		public string Num_Int_Entrega { get; set; }
 		public string Entre_Calles_Entrega { get; set; }
 		public string Foto_de_Perfil_Spartane_File { get; set; }
-        [Ignored]
-		public EstatusEstatusDeUsuario Estatus_Estatus_de_Usuario { get; set; }
-        [Ignored]
-        public SpartanIDSpartanUser SpartanID_Spartan_User { get; set; }
-		public int Id { get; set; }
+		//public EstatusEstatusDeUsuario Estatus_Estatus_de_Usuario { get; set; }
+        //public SpartanIDSpartanUser SpartanID_Spartan_User { get; set; }
+		//public int Id { get; set; }
 
         [JsonIgnore]
-        [Ignored]
         public string VigenciaFormatted
         {
             get

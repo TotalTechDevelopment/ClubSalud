@@ -88,6 +88,7 @@ namespace ClubSalud
 
                 var user = Helpers.UserHelper.CurrentUser();
                 user.Foto_de_Perfil = folio;
+                Helpers.UserHelper.UpdateUser(user);
 
                 var resp = await App.CurrentApp.Services.PutObjectToTable<User>(user, user.Folio + "", User.TABLE_NAME);
 
@@ -95,6 +96,8 @@ namespace ClubSalud
 
                 if (resp != -1)
                 {
+                    MessagingCenter.Send<HomePage>(this, "UpdateUserInfo");
+
                     await DisplayAlert("", "Fotografía actualizada correctamente", "Ok");
                 }
                 else
@@ -117,7 +120,7 @@ namespace ClubSalud
             _Vigencia.Text = App.CurrentUser.VigenciaFormatted;
 
             var image = "";
-            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != null)
+            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != -1)
             {
                 image = await  App.CurrentApp.Services.GetImage((int) Helpers.UserHelper.CurrentUser().Foto_de_Perfil);
                 _profileImage.Source = image;
@@ -195,7 +198,7 @@ namespace ClubSalud
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil == null)
+            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil == -1)
             {
 				TakePictureActionSheet(_profileImage);
             }
