@@ -6,15 +6,15 @@ using System.Collections.Generic;
 namespace ClubSalud.Models.ClubSalud
 {
    
-	public class EstatusEstatusDeUsuario
-	{
+	public class EstatusEstatusDeUsuario : RealmObject
+    {
 		public int Clave { get; set; }
 		public string Descripcion { get; set; }
 		public int Id { get; set; }
 	}
 
-	public class SpartanIDSpartanUser
-	{
+	public class SpartanIDSpartanUser : RealmObject
+    {
 		public int Id_User { get; set; }
 		public string Name { get; set; }
 		public string Role { get; set; }

@@ -30,11 +30,14 @@ namespace ClubSalud.Pages.Session
 			TapGestureRecognizer tapLogIn = new TapGestureRecognizer();
 			tapLogIn.Tapped += TapLogIn;
 			_BtnLogIn.GestureRecognizers.Add(tapLogIn);
+
+            var tapForgotPassword = new TapGestureRecognizer();
+            tapForgotPassword.Tapped += ShowForgotPasswordMessage;
+            _LabelForgotPassword.GestureRecognizers.Add(tapForgotPassword);
 		}
 
 		async void TapLogIn(object sender, EventArgs e)
 		{
-			DependencyService.Get<IProgress>().ShowProgress("Validando credenciales");
 			if (string.IsNullOrEmpty(_EntryPassword.Text) || string.IsNullOrEmpty(_EntryUsername.Text))
 			{
 				_LabelErrorLogIn.Text = "No se ingreso usuario o contraseña";
@@ -42,7 +45,8 @@ namespace ClubSalud.Pages.Session
 			}
 			else
 			{
-				try
+                DependencyService.Get<IProgress>().ShowProgress("Validando credenciales");
+                try
 				{
 					string where = "Clave_de_Acceso='" + _EntryUsername.Text + "' ";
                     var res = await App.CurrentApp.Services.ListaSelAll<UserPagingModel>(User.TABLE_NAME, 0, 1, where);
@@ -77,6 +81,11 @@ namespace ClubSalud.Pages.Session
 			}
 
 		}
+
+        void ShowForgotPasswordMessage(object sender, EventArgs e)
+        {
+            DisplayAlert("", "Por favor dirigete con tu administrador para que te pueda ayudar con el proceso de recuperar tu contraseña", "Ok");
+        }
 
 	}
 }

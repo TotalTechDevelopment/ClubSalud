@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Data\Local\LocalDataSource.cs" />
     <Compile Include="Data\Models\ParametrosGenerales.cs" />
     <Compile Include="Data\Models\TipoDeCancelacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,14 +56,13 @@
     <Compile Include="Data\Models\Google\GeoCodeJSONClass.cs" />
     <Compile Include="Data\Models\Google\GoogleDirectionsModel.cs" />
     <Compile Include="Data\Models\Google\GoogleMapPlaceClass.cs" />
-    <Compile Include="Data\Services\Configuration.cs" />
-    <Compile Include="Data\Services\Services.cs" />
-    <Compile Include="Data\Services\TokenManager.cs" />
+    <Compile Include="Data\Remote\Configuration.cs" />
+    <Compile Include="Data\Remote\Services.cs" />
+    <Compile Include="Data\Remote\TokenManager.cs" />
     <Compile Include="Helpers\ByteArrayConverter.cs" />
     <Compile Include="Helpers\DistanceCalculation.cs" />
     <Compile Include="Helpers\LocationHelper.cs" />
     <Compile Include="Helpers\PropertiesManager.cs" />
-    <Compile Include="EmptyClass.cs" />
     <Compile Include="Helpers\Google\GooglePlacesHelper.cs" />
     <Compile Include="Data\Models\Google\AddressSearch.cs" />
     <Compile Include="Data\Models\Cliente.cs" />
@@ -81,7 +81,7 @@
     <Compile Include="Data\Models\Tarjetas.cs" />
     <Compile Include="Data\Models\ClienteToken.cs" />
     <Compile Include="Data\Models\EcoWorkerToken.cs" />
-    <Compile Include="Data\RegistroDeRecuperacionDeContrasena.cs" />
+    <Compile Include="Data\Models\RegistroDeRecuperacionDeContrasena.cs" />
     <Compile Include="Data\Models\Cupon.cs" />
     <Compile Include="Data\Models\UbicacionEcoworker.cs" />
     <Compile Include="Data\Models\Spartanfile.cs" />
