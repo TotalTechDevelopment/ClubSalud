@@ -209,11 +209,12 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Providers\SQLite_Android.cs" />
+    <Compile Include="Renders\CustomEntryRenderer_Droid .cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ProgressView.cs" />
     <Compile Include="Providers\ImageProcessor.cs" />
-    <Compile Include="BasePageRenderer.cs" />
+    <Compile Include="Renders\BasePageRenderer.cs" />
     <Compile Include="MainApplication.cs" />
   </ItemGroup>
   <ItemGroup>
