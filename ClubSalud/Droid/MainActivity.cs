@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Android.Support.V4.App;
+using Plugin.Permissions;
 
 namespace ClubSalud.Droid
 {
@@ -36,7 +37,13 @@ namespace ClubSalud.Droid
             LoadApplication(new App());
         }
 
-		private Action<int, Result, Intent> _resultCallback;
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+        private Action<int, Result, Intent> _resultCallback;
 
 		public void StartActivity(Intent intent, Action<int, Result, Intent> resultCallback)
 		{
