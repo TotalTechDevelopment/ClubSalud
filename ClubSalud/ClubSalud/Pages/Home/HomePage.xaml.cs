@@ -10,6 +10,7 @@ using ClubSalud.Providers;
 using System.Collections.Generic;
 using System.Linq;
 using ClubSalud.Models.ClubSalud;
+using ClubSalud.Pages.Home;
 
 namespace ClubSalud
 {
@@ -116,6 +117,7 @@ namespace ClubSalud
         async void PopulatingProfile()
         {
             _Name.Text = App.CurrentUser.Nombre_del_Titular;
+            _LastName.Text = App.CurrentUser.Apellido_Paterno_del_Titular + " " + App.CurrentUser.Apellido_Materno_del_Titular;
             _Member.Text = App.CurrentUser.Numero_de_Seguro;
             _Vigencia.Text = App.CurrentUser.VigenciaFormatted;
 
@@ -185,8 +187,9 @@ namespace ClubSalud
                     Helpers.DependentHelper.CurrentDependent = dependent;
                     var dependetPosition = ListaDependientes.IndexOf(dependent);
                     Helpers.DependentHelper.CurrentDependentPosition = dependetPosition;
-                    
-					navigation.NavigatePages(ItemPage.ProfileDependent);
+
+                    //navigation.NavigatePages(ItemPage.ProfileDependent);
+                    Navigation.PushAsync(new ProfileDependetPage());
 				}
             }
             catch (Exception ex)

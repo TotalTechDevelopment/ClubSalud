@@ -33,7 +33,7 @@ namespace ClubSalud.Pages.Session
 
             var tapForgotPassword = new TapGestureRecognizer();
             tapForgotPassword.Tapped += ShowForgotPasswordMessage;
-            _LabelForgotPassword.GestureRecognizers.Add(tapForgotPassword);
+            _ForgotPasswordContainer.GestureRecognizers.Add(tapForgotPassword);
 		}
 
 		async void TapLogIn(object sender, EventArgs e)

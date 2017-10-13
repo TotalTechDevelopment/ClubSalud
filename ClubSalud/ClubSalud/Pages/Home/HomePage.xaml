@@ -24,7 +24,8 @@
                             </Grid.GestureRecognizers>
                         </Grid>
                         <StackLayout Margin="16" VerticalOptions="FillAndExpand" Grid.Row="1">
-                            <Label Text="Nombre de usuario" x:Name="_Name" FontSize="20" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" />
+                            <Label Text="" x:Name="_Name" FontSize="20" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" />
+                            <Label Text="" x:Name="_LastName" FontSize="20" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" />
                             <StackLayout BackgroundColor="{StaticResource PrimaryColor}" HorizontalOptions="FillAndExpand">
                                 <Label Text="Titular" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="White" />
                             </StackLayout>

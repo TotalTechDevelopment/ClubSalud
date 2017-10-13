@@ -36,13 +36,14 @@ namespace ClubSalud.Pages.Home
             var dependent = Helpers.DependentHelper.CurrentDependent;
 
             _DependentName.Text = dependent.Nombre;
+            _LastName.Text = dependent.Apellido_Paterno + " " + dependent.Apellido_Materno;
 			_Member.Text = App.CurrentUser.Numero_de_Seguro;
 			_Vigencia.Text = App.CurrentUser.VigenciaFormatted;
 
             var image = "";
-            if (Helpers.DependentHelper.CurrentDependent.Foto != null)
+            if (dependent.Foto != -1 && dependent.Foto != 0)
             {
-                image = await App.CurrentApp.Services.GetImage((int)Helpers.DependentHelper.CurrentDependent.Foto);
+                image = await App.CurrentApp.Services.GetImage((int)dependent.Foto);
                 _profileImage.Source = image;
             }
             else
@@ -113,7 +114,7 @@ namespace ClubSalud.Pages.Home
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            if (Helpers.DependentHelper.CurrentDependent.Foto == null)
+            if (Helpers.DependentHelper.CurrentDependent.Foto == -1 || Helpers.DependentHelper.CurrentDependent.Foto == 0)
             {
                 TakePictureActionSheet(_profileImage);
             }

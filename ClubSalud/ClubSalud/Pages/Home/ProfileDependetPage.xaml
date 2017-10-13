@@ -42,6 +42,7 @@
                                        FontSize="18" 
                                        TextColor="White"
                                         x:Name="_DependentName"/>
+                                <Label Text="" x:Name="_LastName" FontSize="18" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" TextColor="White" />
                             </StackLayout>
                             <StackLayout BackgroundColor="{StaticResource WhiteMoon}"
                                          HorizontalOptions="FillAndExpand">

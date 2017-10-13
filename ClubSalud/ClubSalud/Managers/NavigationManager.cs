@@ -32,7 +32,7 @@ namespace ClubSalud.Managers
                     break;
             }
         }
-        public  void NavigatePages(ItemPage page)
+        public void NavigatePages(ItemPage page)
         {
             App.Master.IsPresented = false;
             switch(page)

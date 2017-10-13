@@ -5,7 +5,7 @@
              BackgroundImage="bgClubS.png">
     <ContentPage.Content>
         <StackLayout Margin="28,90,28,66">
-            <Image Source="logoLogin.png" WidthRequest="330"
+            <Image Source="logoLogin.png" WidthRequest="300"
                    HorizontalOptions="Center" VerticalOptions="Center"/>
             <Label Text="Acceso a Mi Credencial"
                    FontSize="18"
@@ -26,7 +26,7 @@
                     </StackLayout>
                 </Frame.Content>
             </Frame>
-            <Frame Padding="0" Margin="0,0,0,20">
+            <Frame Padding="0" Margin="0,0,0,10">
                 <Frame.Content>
                     <StackLayout Orientation="Horizontal">
                         <Image Source="secure.png"
@@ -46,12 +46,15 @@
                    HorizontalOptions="CenterAndExpand"
                    Margin="0,20,0,0"
                    TextColor="White"/>
-            <Label x:Name="_LabelForgotPassword"
+            <StackLayout x:Name="_ForgotPasswordContainer" HorizontalOptions="FillAndExpand" HeightRequest="50">
+                <Label x:Name="_LabelForgotPassword"
                    Text="¿Olvidaste tu contraseña?" 
                    TextColor="White"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" 
                    FontSize="10"/>
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
