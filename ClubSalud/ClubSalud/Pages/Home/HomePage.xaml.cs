@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ClubSalud.Models.ClubSalud;
 using ClubSalud.Pages.Home;
+using ClubSalud.Utils;
 
 namespace ClubSalud
 {
@@ -65,7 +66,16 @@ namespace ClubSalud
 
                 if (resp != null && resp.Detalle_de_Dependientes_de_Usuarios.Count > 0)
                 {
+                    _ListDepents.Children.Clear();
+                    if (ListaDependientes != null)
+                    {
+                        ListaDependientes.Clear();
+                    }
                     ListaDependientes = resp.Detalle_de_Dependientes_de_Usuarios;
+                    if (Helpers.DependentHelper.ListaDependientes != null)
+                    {
+                        Helpers.DependentHelper.ListaDependientes.Clear();
+                    }
                     Helpers.DependentHelper.ListaDependientes = ListaDependientes;
 
                     PopulatingDependent();
@@ -117,7 +127,9 @@ namespace ClubSalud
         async void PopulatingProfile()
         {
             _Name.Text = App.CurrentUser.Nombre_del_Titular;
-            _LastName.Text = App.CurrentUser.Apellido_Paterno_del_Titular + " " + App.CurrentUser.Apellido_Materno_del_Titular;
+            var lastNameP = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Paterno_del_Titular);
+            var lastNameM = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Materno_del_Titular);
+            _LastName.Text = lastNameP + " " + lastNameM;
             _Member.Text = App.CurrentUser.Numero_de_Seguro;
             _Vigencia.Text = App.CurrentUser.VigenciaFormatted;
 

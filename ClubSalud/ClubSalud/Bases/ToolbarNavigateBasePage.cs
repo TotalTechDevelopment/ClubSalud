@@ -20,8 +20,8 @@ namespace ClubSalud.Bases
 			var menu = new Image()
 			{
 				Source = "menu.png",
-				WidthRequest = 32,
-				HeightRequest = 32,
+				WidthRequest = 50,
+				HeightRequest = 50,
 				HorizontalOptions = LayoutOptions.Start,
 				VerticalOptions = LayoutOptions.Center
 			};
@@ -41,8 +41,8 @@ namespace ClubSalud.Bases
 			var home = new Image()
 			{
 				Source = "home.png",
-				WidthRequest = 32,
-				HeightRequest = 32,
+				WidthRequest = 50,
+				HeightRequest = 50,
 				HorizontalOptions = LayoutOptions.End,
 				VerticalOptions = LayoutOptions.Center
 			};

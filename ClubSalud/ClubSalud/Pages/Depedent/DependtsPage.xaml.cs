@@ -1,5 +1,6 @@
 ﻿using ClubSalud.Managers;
 using ClubSalud.Models.Menu;
+using ClubSalud.Pages.Home;
 using ClubSalud.Providers;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,8 @@ namespace ClubSalud.Pages.Depedent
 
                 Helpers.DependentHelper.CurrentDependent = dependent;
                 Helpers.DependentHelper.CurrentDependentPosition = ListaDependientes.IndexOf(dependent);
-                navigation.NavigatePages(ItemPage.ProfileDependent);
+                Navigation.PushAsync(new ProfileDependetPage());
+                //navigation.NavigatePages(ItemPage.ProfileDependent);
             };
         }
 

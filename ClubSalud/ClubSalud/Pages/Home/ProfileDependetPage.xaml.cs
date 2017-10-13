@@ -1,4 +1,5 @@
 ﻿using ClubSalud.Providers;
+using ClubSalud.Utils;
 using System;
 using System.Collections.Generic;
 
@@ -36,7 +37,9 @@ namespace ClubSalud.Pages.Home
             var dependent = Helpers.DependentHelper.CurrentDependent;
 
             _DependentName.Text = dependent.Nombre;
-            _LastName.Text = dependent.Apellido_Paterno + " " + dependent.Apellido_Materno;
+            var lastNameP = AppViewUtils.RemoveWhiteSpaces(dependent.Apellido_Paterno);
+            var lastNameM = AppViewUtils.RemoveWhiteSpaces(dependent.Apellido_Materno);
+            _LastName.Text = lastNameP + " " + lastNameM;
 			_Member.Text = App.CurrentUser.Numero_de_Seguro;
 			_Vigencia.Text = App.CurrentUser.VigenciaFormatted;
 
