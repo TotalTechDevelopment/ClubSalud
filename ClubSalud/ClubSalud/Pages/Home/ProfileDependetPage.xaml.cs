@@ -44,7 +44,7 @@ namespace ClubSalud.Pages.Home
 			_Vigencia.Text = App.CurrentUser.VigenciaFormatted;
 
             var image = "";
-            if (dependent.Foto != -1 && dependent.Foto != 0)
+            if (dependent.Foto != null && dependent.Foto != -1 && dependent.Foto != 0)
             {
                 image = await App.CurrentApp.Services.GetImage((int)dependent.Foto);
                 _profileImage.Source = image;
@@ -117,7 +117,7 @@ namespace ClubSalud.Pages.Home
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            if (Helpers.DependentHelper.CurrentDependent.Foto == -1 || Helpers.DependentHelper.CurrentDependent.Foto == 0)
+            if (Helpers.DependentHelper.CurrentDependent.Foto == null || Helpers.DependentHelper.CurrentDependent.Foto == -1 || Helpers.DependentHelper.CurrentDependent.Foto == 0)
             {
                 TakePictureActionSheet(_profileImage);
             }

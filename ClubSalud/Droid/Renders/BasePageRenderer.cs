@@ -93,51 +93,11 @@ namespace ClubSalud.Droid
                 if (_basePage != null)
                 {
                     _basePage.ImagePath = media.Path;
+                    //ResizeImageAndroid(mstr.ToArray(), 700, 700, 100);
                     _basePage.bytes = ResizeImageAndroid(mstr.ToArray(), 700, 700, 100);
                     _basePage.Source = ImageSource.FromStream(() => new MemoryStream(_basePage.bytes));
                 }
             }, TaskScheduler.FromCurrentSynchronizationContext());
-
-            //if (!isFromCamera)
-            //{
-            //  await data.GetMediaFileExtraAsync(this.Context).ContinueWith(t =>
-            //  {
-            //      Console.WriteLine(t.Result.Path);
-            //      //_page.ImagePath = t.Result.Path;
-            //      MediaFile media = t.Result;
-            //      //ShowPhoto(media);
-
-            //      MemoryStream mstr = new MemoryStream();
-            //      media.GetStream().CopyTo(mstr);
-
-            //      if (_basePage != null)
-            //      {
-            //          _basePage.ImagePath = media.Path;
-            //          _basePage.bytes = ResizeImageAndroid(mstr.ToArray(), 700, 700, 100);
-            //          _basePage.Source = ImageSource.FromStream(() => new MemoryStream(_basePage.bytes));
-            //      }
-            //  }, TaskScheduler.FromCurrentSynchronizationContext());
-            //}
-            //else
-            //{
-            //  var image = (Bitmap)data.Extras.Get("data");
-
-            //  //convert bitmap into byte array
-            //  byte[] bitmapData;
-            //  using (var stream = new MemoryStream())
-            //  {
-            //      image.Compress(Bitmap.CompressFormat.Png, 0, stream);
-            //      //bitmapData = stream.ToArray();
-
-            //      if (_basePage != null)
-            //      {
-            //          _basePage.ImagePath = _file.Path;
-            //          _basePage.bytes = ResizeImageAndroid(stream.ToArray(), 700, 700, 100);
-            //          _basePage.Source = ImageSource.FromStream(() => new MemoryStream(_basePage.bytes));
-            //      }
-            //  }
-
-            //}
 
         }
 
@@ -164,9 +124,16 @@ namespace ClubSalud.Droid
 
             Bitmap resizedImage = Bitmap.CreateScaledBitmap(originalImage, (int)newWidth, (int)newHeight, false);
 
+            var rotate = 90;
+            Matrix mtx = new Matrix();
+            mtx.PreRotate(rotate);
+
+            // Rotating Bitmap & convert to ARGB_8888, required by tess
+            var rotatedBitmap = Bitmap.CreateBitmap(resizedImage, 0, 0, (int)newWidth, (int)newHeight, mtx, false);
+
             using (MemoryStream ms = new MemoryStream())
             {
-                resizedImage.Compress(Bitmap.CompressFormat.Jpeg, quality, ms);
+                rotatedBitmap.Compress(Bitmap.CompressFormat.Jpeg, quality, ms);
                 return ms.ToArray();
             }
         }
