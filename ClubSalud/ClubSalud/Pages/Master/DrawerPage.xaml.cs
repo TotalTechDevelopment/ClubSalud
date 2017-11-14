@@ -6,6 +6,9 @@ using ClubSalud.Models.Menu;
 using Xamarin.Forms;
 using ClubSalud.Providers;
 using ClubSalud.Models.ClubSalud;
+using ClubSalud.Pages.Directory;
+using ClubSalud.Pages.Depedent;
+using ClubSalud.Pages.Session;
 
 namespace ClubSalud.Pages.Master
 {
@@ -13,10 +16,15 @@ namespace ClubSalud.Pages.Master
 	{
 		private ObservableCollection<ItemMenu> menuItems;
 		private NavigationManager navigation;
+        private MasterPage _master;
 
-		public DrawerPage()
+        public DrawerPage(MasterPage master)
 		{
 			InitializeComponent();
+
+            NavigationPage.SetHasNavigationBar(this, false);
+
+            _master = master;
 
             MessagingCenter.Subscribe<HomePage>(this, "UpdateUserInfo", (sender) =>
             {
@@ -104,11 +112,35 @@ namespace ClubSalud.Pages.Master
 
 				var item = e.SelectedItem as ItemMenu;
 
-				navigation.NavigateMenu(item.Page);
+                //navigation.NavigateMenu(item.Page);
+                Page toPage = null;
+                switch (item.Page)
+                {
+                    case ItemPageMenu.Directory:
+                        toPage = new DirectoryPage();
+                        Navigation.PushAsync(toPage);
+                        break;
+                    case ItemPageMenu.MyEarrings:
+                        toPage = new DependtsPage();
+                        Navigation.PushAsync(toPage);
+                        break;
+                    case ItemPageMenu.Exit:
+                        Helpers.UserHelper.Logout();
+                        App.Master.ChangeRootPage(new LogInPage());
+                        break;
+                    case ItemPageMenu.Home:
+                        App.Master.ChangeRootPage(new HomePage());
+                        break;
+                    default:
+                        break;
+                }
+
 				foreach (var n in menuItems) n.Selected = false;
 				item.Selected = true;
 				ListMenu.ItemsSource = new ObservableCollection<ItemMenu>(menuItems);
 				ListMenu.SelectedItem = null;
+
+                _master.IsPresented = false;
 			};
 		}
 

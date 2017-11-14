@@ -201,7 +201,7 @@ namespace ClubSalud
                     Helpers.DependentHelper.CurrentDependentPosition = dependetPosition;
 
                     //navigation.NavigatePages(ItemPage.ProfileDependent);
-                    Navigation.PushAsync(new ProfileDependetPage());
+                    App.Master.Navigation.PushAsync(new ProfileDependetPage());
 				}
             }
             catch (Exception ex)

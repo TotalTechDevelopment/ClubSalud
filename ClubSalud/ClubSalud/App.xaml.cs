@@ -41,9 +41,14 @@ namespace ClubSalud
             }
             else
             {
-                MainPage = new MasterPage();
+                MainPage = new NavigationPage(new MasterPage());
             }
             
+        }
+
+        public void ChangeToRootPage()
+        {
+            MainPage = new NavigationPage(new MasterPage());
         }
 
         protected override void OnSleep()

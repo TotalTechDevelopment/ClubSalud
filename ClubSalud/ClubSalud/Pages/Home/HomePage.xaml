@@ -5,7 +5,7 @@
             <StackLayout.Margin>
                 <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
             </StackLayout.Margin>
-            <Bases:ToolbarNavigateBasePage />
+            <Bases:ToolbarNavigateBasePage ShowHome="true" />
             <Frame Padding="0" Margin="10" VerticalOptions="FillAndExpand">
                 <Frame.Content>
                     <Grid VerticalOptions="FillAndExpand">

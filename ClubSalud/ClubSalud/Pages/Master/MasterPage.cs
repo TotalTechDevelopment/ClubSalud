@@ -9,7 +9,8 @@ namespace ClubSalud.Pages.Master
 		DrawerPage drawerPage;
 		public MasterPage()
 		{
-			drawerPage = new DrawerPage();
+            NavigationPage.SetHasNavigationBar(this, false);
+			drawerPage = new DrawerPage(this);
 			Master = drawerPage;
 			Detail = new NavigationPage(new HomePage ());
 		}

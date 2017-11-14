@@ -48,7 +48,7 @@
                    TextColor="White"/>
             <StackLayout x:Name="_ForgotPasswordContainer" HorizontalOptions="FillAndExpand" HeightRequest="50">
                 <Label x:Name="_LabelForgotPassword"
-                   Text="¿Olvidaste tu contraseña?" 
+                   Text="¿Necesitas ayuda?" 
                    TextColor="White"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" 

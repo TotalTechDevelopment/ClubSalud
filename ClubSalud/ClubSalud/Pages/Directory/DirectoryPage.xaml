@@ -8,8 +8,8 @@
             <StackLayout.Margin>
                 <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" Android="0,0,0,0" />
             </StackLayout.Margin>
-            <Bases:ToolbarNavigateBasePage/>
-            <WebView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="http://www.clubsaludfamiliar.com.mx/index.php/medicos"/>
+            <Bases:ToolbarNavigateBasePage ShowHome="false"/>
+            <WebView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="https://www.clubsaludfamiliar.com.mx/"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

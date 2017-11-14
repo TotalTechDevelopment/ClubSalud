@@ -249,6 +249,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\no_jala.png" />
     <AndroidResource Include="Resources\drawable-hdpi\secure.png" />
     <AndroidResource Include="Resources\drawable-hdpi\users.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\left_white.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\left_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\left_white.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="AndHUD">

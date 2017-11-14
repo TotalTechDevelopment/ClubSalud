@@ -6,32 +6,45 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using ClubSalud.Bases;
 
 namespace ClubSalud.Pages.Depedent
 {
-	public partial class DependtsPage : ContentPage
-	{
+    public partial class DependtsPage : ContentPage
+    {
         private NavigationManager navigation;
 
         private List<DetalleDeDependientesDeUsuario> ListaDependientes { set; get; }
 
         public DependtsPage()
-		{
-			InitializeComponent();
-			NavigationPage.SetHasNavigationBar(this, false);
+        {
+            InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
 
             navigation = new NavigationManager();
 
             _ListDependts.ItemSelected += (sender, e) =>
             {
+                if (e.SelectedItem == null)
+                {
+                    return;
+                }
 
                 var dependent = ((ListView)sender).SelectedItem as DetalleDeDependientesDeUsuario;
 
                 Helpers.DependentHelper.CurrentDependent = dependent;
                 Helpers.DependentHelper.CurrentDependentPosition = ListaDependientes.IndexOf(dependent);
                 Navigation.PushAsync(new ProfileDependetPage());
+
+                _ListDependts.SelectedItem = null;
+
                 //navigation.NavigatePages(ItemPage.ProfileDependent);
             };
+
+            MessagingCenter.Subscribe<ToolbarNavigateBasePage>(this, "ToMainPage", (sender) =>
+            {
+                Navigation?.PopAsync();
+            });
         }
 
         protected override void OnAppearing()
@@ -40,20 +53,20 @@ namespace ClubSalud.Pages.Depedent
 
             if (Helpers.DependentHelper.ListaDependientes == null)
             {
-               GetDependents();
+                GetDependents();
             }
             else
             {
                 ListaDependientes = Helpers.DependentHelper.ListaDependientes;
                 PopulatingDependents();
             }
-           
+
         }
 
         void PopulatingDependents()
-		{
+        {
             _ListDependts.ItemsSource = ListaDependientes;
-		}
+        }
 
         async void GetDependents()
         {
@@ -82,5 +95,5 @@ namespace ClubSalud.Pages.Depedent
                 DependencyService.Get<IProgress>().Dismiss();
             }
         }
-	}
+    }
 }

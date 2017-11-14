@@ -19,6 +19,8 @@ namespace ClubSalud.Pages.Session
         {
             InitializeComponent();
             navigation = new NavigationManager();
+
+            NavigationPage.SetHasNavigationBar(this, false);
 #if DEBUG
             _EntryUsername.Text = "HEB1641@mail.com";
             _EntryPassword.Text = "1641";
@@ -57,7 +59,7 @@ namespace ClubSalud.Pages.Session
 						{
 							var user = res.Registro_de_Usuarios.FirstOrDefault();
                             Helpers.UserHelper.SaveUserInfo(user);
-							App.CurrentApp.MainPage = new MasterPage();
+                            App.CurrentApp.MainPage = new NavigationPage(new MasterPage());
 						}
 						else
 						{
@@ -84,7 +86,14 @@ namespace ClubSalud.Pages.Session
 
         void ShowForgotPasswordMessage(object sender, EventArgs e)
         {
-            DisplayAlert("", "Por favor dirigete con tu administrador para que te pueda ayudar con el proceso de recuperar tu contraseña", "Ok");
+            try
+            {
+                Device.OpenUri(new Uri("whatsapp://send?phone=9530670491&text="));
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
         }
 
 	}
