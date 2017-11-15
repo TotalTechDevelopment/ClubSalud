@@ -73,7 +73,7 @@ namespace ClubSalud.Models.ClubSalud
             get
             {
                 var vigenciaDateTime = DateTime.Parse(Vigencia);
-                return vigenciaDateTime.ToString("d");
+                return vigenciaDateTime.ToString("dd/MM/yyyy");
             }
         }
 	}

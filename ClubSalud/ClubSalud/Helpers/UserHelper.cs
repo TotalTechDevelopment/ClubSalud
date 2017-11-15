@@ -68,6 +68,7 @@ namespace ClubSalud.Helpers
                 actualUser.Num_Int_Entrega = user.Num_Int_Entrega;
                 actualUser.Entre_Calles_Entrega = user.Entre_Calles_Entrega;
                 actualUser.Foto_de_Perfil_Spartane_File = user.Foto_de_Perfil_Spartane_File;
+                actualUser.SpartanID = user.SpartanID;
 
                 App.CurrentUser = actualUser;
 

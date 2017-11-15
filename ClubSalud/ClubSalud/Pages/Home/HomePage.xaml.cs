@@ -213,10 +213,10 @@ namespace ClubSalud
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil == -1)
-            {
+    //        if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil == -1)
+    //        {
 				TakePictureActionSheet(_profileImage);
-            }
+            //}
         }
     }
 }

@@ -103,6 +103,40 @@ namespace ClubSalud.Droid
 
         public static byte[] ResizeImageAndroid(byte[] imageData, float width, float height, int quality)
         {
+            //// Load the bitmap
+            //Bitmap originalImage = BitmapFactory.DecodeByteArray(imageData, 0, imageData.Length);
+
+            //float oldWidth = (float)originalImage.Width;
+            //float oldHeight = (float)originalImage.Height;
+            //float scaleFactor = 0f;
+
+            //if (oldWidth > oldHeight)
+            //{
+            //    scaleFactor = width / oldWidth;
+            //}
+            //else
+            //{
+            //    scaleFactor = height / oldHeight;
+            //}
+
+            //float newHeight = oldHeight * scaleFactor;
+            //float newWidth = oldWidth * scaleFactor;
+
+            //Bitmap resizedImage = Bitmap.CreateScaledBitmap(originalImage, (int)newWidth, (int)newHeight, false);
+
+            //var rotate = 90;
+            //Matrix mtx = new Matrix();
+            //mtx.PreRotate(rotate);
+
+            //// Rotating Bitmap & convert to ARGB_8888, required by tess
+            //var rotatedBitmap = Bitmap.CreateBitmap(resizedImage, 0, 0, (int)newWidth, (int)newHeight, mtx, false);
+
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    rotatedBitmap.Compress(Bitmap.CompressFormat.Jpeg, quality, ms);
+            //    return ms.ToArray();
+            //}
+
             // Load the bitmap
             Bitmap originalImage = BitmapFactory.DecodeByteArray(imageData, 0, imageData.Length);
 
@@ -124,16 +158,9 @@ namespace ClubSalud.Droid
 
             Bitmap resizedImage = Bitmap.CreateScaledBitmap(originalImage, (int)newWidth, (int)newHeight, false);
 
-            var rotate = 90;
-            Matrix mtx = new Matrix();
-            mtx.PreRotate(rotate);
-
-            // Rotating Bitmap & convert to ARGB_8888, required by tess
-            var rotatedBitmap = Bitmap.CreateBitmap(resizedImage, 0, 0, (int)newWidth, (int)newHeight, mtx, false);
-
             using (MemoryStream ms = new MemoryStream())
             {
-                rotatedBitmap.Compress(Bitmap.CompressFormat.Jpeg, quality, ms);
+                resizedImage.Compress(Bitmap.CompressFormat.Jpeg, quality, ms);
                 return ms.ToArray();
             }
         }
