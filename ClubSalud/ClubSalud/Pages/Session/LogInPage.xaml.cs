@@ -88,7 +88,7 @@ namespace ClubSalud.Pages.Session
         {
             try
             {
-                Device.OpenUri(new Uri("whatsapp://send?phone=9530670491&text="));
+                Device.OpenUri(new Uri("whatsapp://send?phone=5218110056739&text="));
             }
             catch (Exception ex)
             {

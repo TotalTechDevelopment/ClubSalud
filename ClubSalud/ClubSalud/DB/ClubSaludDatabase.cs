@@ -69,7 +69,7 @@ namespace ClubSalud.DB
             dbUser.Vigencia = user.Vigencia;
             dbUser.Clave_de_Acceso = user.Clave_de_Acceso;
             dbUser.Contrasena = user.Contrasena;
-            dbUser.SpartanID = (int)user.SpartanID;
+            //dbUser.SpartanID = (int)user.SpartanID;
             dbUser.Nombre_del_Titular = user.Nombre_del_Titular;
             dbUser.Apellido_Paterno_del_Titular = user.Apellido_Paterno_del_Titular;
             dbUser.Apellido_Materno_del_Titular = user.Apellido_Materno_del_Titular;

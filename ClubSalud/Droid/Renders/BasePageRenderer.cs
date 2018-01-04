@@ -14,6 +14,8 @@ using Uri = Android.Net.Uri;
 using ClubSalud.Droid;
 using ClubSalud.Pages;
 using ClubSalud;
+using Android.Media;
+using Java.Lang;
 
 [assembly: ExportRenderer(typeof(BaseContentPage), typeof(BasePageRenderer))]
 namespace ClubSalud.Droid
@@ -94,14 +96,14 @@ namespace ClubSalud.Droid
                 {
                     _basePage.ImagePath = media.Path;
                     //ResizeImageAndroid(mstr.ToArray(), 700, 700, 100);
-                    _basePage.bytes = ResizeImageAndroid(mstr.ToArray(), 700, 700, 100);
+                    _basePage.bytes = ResizeImageAndroid(mstr.ToArray(), 700, 700, 100, media);
                     _basePage.Source = ImageSource.FromStream(() => new MemoryStream(_basePage.bytes));
                 }
             }, TaskScheduler.FromCurrentSynchronizationContext());
 
         }
 
-        public static byte[] ResizeImageAndroid(byte[] imageData, float width, float height, int quality)
+        public static byte[] ResizeImageAndroid(byte[] imageData, float width, float height, int quality, MediaFile file)
         {
             //// Load the bitmap
             //Bitmap originalImage = BitmapFactory.DecodeByteArray(imageData, 0, imageData.Length);
@@ -160,8 +162,62 @@ namespace ClubSalud.Droid
 
             using (MemoryStream ms = new MemoryStream())
             {
+                resizedImage = changeOrientation(file, resizedImage);
                 resizedImage.Compress(Bitmap.CompressFormat.Jpeg, quality, ms);
                 return ms.ToArray();
+            }
+        }
+
+        static Bitmap changeOrientation(MediaFile mediafile, Bitmap bitmap)
+        {
+            var exifInterface = new ExifInterface(mediafile.Path);
+            int orientation = exifInterface.GetAttributeInt(ExifInterface.TagOrientation, 0);
+            var matrix = new Matrix();
+            switch (orientation)
+            {
+                case 2:
+                    matrix.SetScale(-1, 1);
+                    break;
+                case 3:
+                    matrix.SetRotate(180);
+                    break;
+                case 4:
+                    matrix.SetRotate(180);
+                    matrix.PostScale(-1, 1);
+                    break;
+                case 5:
+                    matrix.SetRotate(90);
+                    matrix.PostScale(-1, 1);
+                    break;
+                case 6:
+                    matrix.SetRotate(90);
+                    break;
+                case 7:
+                    matrix.SetRotate(-90);
+                    matrix.PostScale(-1, 1);
+                    break;
+                case 8:
+                    matrix.SetRotate(-90);
+                    break;
+                default:
+                    return bitmap;
+            }
+
+            try
+            {
+                Bitmap oriented = Bitmap.CreateBitmap(bitmap, 0, 0, bitmap.Width, bitmap.Height, matrix, true);
+                bitmap.Recycle();
+                return oriented;
+            }
+            catch (OutOfMemoryError e)
+            {
+                e.PrintStackTrace();
+                return bitmap;
+            }
+            catch (System.Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                return bitmap;
             }
         }
     }

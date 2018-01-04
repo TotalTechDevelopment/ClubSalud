@@ -52,7 +52,7 @@ namespace ClubSalud.Helpers
                 actualUser.Vigencia = user.Vigencia;
                 actualUser.Clave_de_Acceso = user.Clave_de_Acceso;
                 actualUser.Contrasena = user.Contrasena;
-                actualUser.SpartanID = user.SpartanID;
+                //actualUser.SpartanID = user.SpartanID;
                 actualUser.Nombre_del_Titular = user.Nombre_del_Titular;
                 actualUser.Apellido_Paterno_del_Titular = user.Apellido_Paterno_del_Titular;
                 actualUser.Apellido_Materno_del_Titular = user.Apellido_Materno_del_Titular;
@@ -67,8 +67,8 @@ namespace ClubSalud.Helpers
                 actualUser.Num_Ext_Entrega = user.Num_Ext_Entrega;
                 actualUser.Num_Int_Entrega = user.Num_Int_Entrega;
                 actualUser.Entre_Calles_Entrega = user.Entre_Calles_Entrega;
-                actualUser.Foto_de_Perfil_Spartane_File = user.Foto_de_Perfil_Spartane_File;
-                actualUser.SpartanID = user.SpartanID;
+                //actualUser.Foto_de_Perfil_Spartane_File = user.Foto_de_Perfil_Spartane_File;
+                //actualUser.SpartanID = user.SpartanID;
 
                 App.CurrentUser = actualUser;
 

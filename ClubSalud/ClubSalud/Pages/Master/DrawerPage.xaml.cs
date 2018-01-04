@@ -84,7 +84,8 @@ namespace ClubSalud.Pages.Master
 
         void LoadMenu()
 		{
-			_LabelNombre.Text = Helpers.UserHelper.CurrentUser().Nombre_del_Titular;
+            var currentUser = Helpers.UserHelper.CurrentUser();
+            _LabelNombre.Text = currentUser.Nombre_del_Titular;
 
             if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != -1)
             {
@@ -92,8 +93,8 @@ namespace ClubSalud.Pages.Master
             }
 
 			menuItems = new ObservableCollection<ItemMenu>();
-			string[] titles = new string[] { "Inicio", "Directorio", "Mis dependientes", "Salir" };
-			string[] icons = new string[] { "home.png", "book.png", "users.png", "logout.png" };
+			string[] titles = new string[] { "Inicio", "Directorio", "Mis dependientes", "¿Necesitas ayuda?", "Salir" };
+            string[] icons = new string[] { "home.png", "book.png", "users.png", "logout.png", "logout.png" };
 			int i = 0;
 			foreach (ItemPageMenu page in Enum.GetValues(typeof(ItemPageMenu)))
 			{
@@ -124,6 +125,9 @@ namespace ClubSalud.Pages.Master
                         toPage = new DependtsPage();
                         Navigation.PushAsync(toPage);
                         break;
+                    case ItemPageMenu.NeedHelp:
+                        ShowNeedHelpInfo();
+                        break;
                     case ItemPageMenu.Exit:
                         Helpers.UserHelper.Logout();
                         App.Master.ChangeRootPage(new LogInPage());
@@ -143,6 +147,18 @@ namespace ClubSalud.Pages.Master
                 _master.IsPresented = false;
 			};
 		}
+
+        void ShowNeedHelpInfo()
+        {
+            try
+            {
+                Device.OpenUri(new Uri("whatsapp://send?phone=5218110056739&text="));
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
 
         async void LoadUserPhoto()
         {

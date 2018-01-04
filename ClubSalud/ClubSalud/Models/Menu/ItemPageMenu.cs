@@ -7,6 +7,7 @@ namespace ClubSalud.Models.Menu
 		Home,
         Directory,
         MyEarrings,
+        NeedHelp,
         Exit
 	}
 
