@@ -9,13 +9,16 @@ namespace ClubSalud.Helpers
     {
         public static void SaveUserInfo(User user)
         {
+            var dbConnection = new ClubSaludDatabase();
             try
             {
-                var dbConnection = new ClubSaludDatabase();
+                user.EmpresaNombre = user.Empresa_Registro_de_Empresa != null ? user.Empresa_Registro_de_Empresa.Nombre : "";
                 dbConnection.AddUser(user);
             }
             catch (Exception ex)
             {
+                dbConnection.DeleteUser(user.Folio);
+                dbConnection.AddUser(user);
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
@@ -69,9 +72,8 @@ namespace ClubSalud.Helpers
                 actualUser.Entre_Calles_Entrega = user.Entre_Calles_Entrega;
                 //actualUser.Foto_de_Perfil_Spartane_File = user.Foto_de_Perfil_Spartane_File;
                 //actualUser.SpartanID = user.SpartanID;
-
+                actualUser.EmpresaNombre = user.EmpresaNombre;
                 App.CurrentUser = actualUser;
-
                 return App.CurrentUser;
             }
             catch (Exception ex)

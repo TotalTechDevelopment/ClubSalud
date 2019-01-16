@@ -132,7 +132,7 @@ namespace ClubSalud
             _LastName.Text = lastNameP + " " + lastNameM;
             _Member.Text = App.CurrentUser.Numero_de_Seguro;
             _Vigencia.Text = App.CurrentUser.VigenciaFormatted;
-
+            _Empresa.Text = App.CurrentUser.EmpresaNombre;
             var image = "";
             if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != -1)
             {

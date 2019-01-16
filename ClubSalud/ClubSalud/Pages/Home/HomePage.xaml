@@ -36,7 +36,11 @@
                             <StackLayout BackgroundColor="{StaticResource WhiteMoon}" HorizontalOptions="FillAndExpand">
                                 <Label Text="Vigencia" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" TextColor="{StaticResource SecondaryColorText}" />
                             </StackLayout>
-                            <Label Text="01 de enero del 2018" x:Name="_Vigencia" HorizontalOptions="CenterAndExpand" FontSize="15" VerticalOptions="FillAndExpand" />
+                            <Label  x:Name="_Vigencia" HorizontalOptions="CenterAndExpand" FontSize="15" VerticalOptions="FillAndExpand" />
+                             <StackLayout BackgroundColor="{StaticResource WhiteMoon}" HorizontalOptions="FillAndExpand">
+                                <Label Text="Empresa" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" TextColor="{StaticResource SecondaryColorText}" />
+                            </StackLayout>
+                            <Label  x:Name="_Empresa" HorizontalOptions="CenterAndExpand" FontSize="15" VerticalOptions="FillAndExpand" />
                             <StackLayout BackgroundColor="{StaticResource WhiteMoon}" HorizontalOptions="FillAndExpand" VerticalOptions="End">
                                 <Label Text="Dependientes" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="15" TextColor="{StaticResource SecondaryColorText}" />
                             </StackLayout>

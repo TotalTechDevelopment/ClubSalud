@@ -85,7 +85,7 @@ namespace ClubSalud.DB
             dbUser.Num_Int_Entrega = user.Num_Int_Entrega;
             dbUser.Entre_Calles_Entrega = user.Entre_Calles_Entrega;
             dbUser.Foto_de_Perfil_Spartane_File = user.Foto_de_Perfil_Spartane_File;
-
+            dbUser.EmpresaNombre = user.EmpresaNombre;
             _connection.Insert(dbUser);
         }
 
