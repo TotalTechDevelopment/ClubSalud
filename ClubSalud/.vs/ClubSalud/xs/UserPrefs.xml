@@ -1,0 +1,21 @@
+﻿<Properties StartupConfiguration="{3790B684-9226-424A-B80A-E3979F628C27}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ClubSalud/Pages/Session/LogInPage.xaml.cs">
+    <Files>
+      <File FileName="ClubSalud/Pages/Session/LogInPage.xaml.cs" Line="25" Column="13" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.ClubSalud.Droid PreferredExecutionTarget="Android.520058265936455d" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ClubSalud.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.5215e075516735b2f5cbfd76d611c9e8dc644334" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/alexdev/Documents/TOTALTECH-GIT/ClubSalud/ClubSalud/ClubSalud/Helpers/UserHelper.cs" relfile="ClubSalud/Helpers/UserHelper.cs" line="22" column="1" />
+      <Breakpoint file="/Users/alexdev/Documents/TOTALTECH-GIT/ClubSalud/ClubSalud/ClubSalud/DB/ClubSaludDatabase.cs" relfile="ClubSalud/DB/ClubSaludDatabase.cs" line="89" column="1" />
+      <Breakpoint file="/Users/alexdev/Documents/TOTALTECH-GIT/ClubSalud/ClubSalud/ClubSalud/DB/ClubSaludDatabase.cs" relfile="ClubSalud/DB/ClubSaludDatabase.cs" line="95" column="1" />
+      <Breakpoint file="/Users/alexdev/Documents/TOTALTECH-GIT/ClubSalud/ClubSalud/ClubSalud/DB/ClubSaludDatabase.cs" relfile="ClubSalud/DB/ClubSaludDatabase.cs" line="94" column="1" />
+      <Breakpoint file="/Users/alexdev/Documents/TOTALTECH-GIT/ClubSalud/ClubSalud/ClubSalud/Pages/Session/LogInPage.xaml.cs" relfile="ClubSalud/Pages/Session/LogInPage.xaml.cs" line="79" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

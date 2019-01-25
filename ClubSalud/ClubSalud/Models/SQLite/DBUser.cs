@@ -50,5 +50,6 @@ namespace ClubSalud.Models.SQLite
         public string Num_Int_Entrega { get; set; }
         public string Entre_Calles_Entrega { get; set; }
         public string Foto_de_Perfil_Spartane_File { get; set; }
+        public string EmpresaNombre { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SQLite;
 using System;
 using System.Collections.Generic;
 
@@ -63,9 +64,18 @@ namespace ClubSalud.Models.ClubSalud
 		public string Num_Int_Entrega { get; set; }
 		public string Entre_Calles_Entrega { get; set; }
 		public string Foto_de_Perfil_Spartane_File { get; set; }
-		//public EstatusEstatusDeUsuario Estatus_Estatus_de_Usuario { get; set; }
+
+        [JsonIgnore]
+        public string EmpresaNombre { get; set; }
+
+        public long? Empresa { get; set; }
+
+        [Ignore]
+        public EmpresaRegistro Empresa_Registro_de_Empresa { get; set; }
+
+        //public EstatusEstatusDeUsuario Estatus_Estatus_de_Usuario { get; set; }
         //public SpartanIDSpartanUser SpartanID_Spartan_User { get; set; }
-		//public int Id { get; set; }
+        //public int Id { get; set; }
 
         [JsonIgnore]
         public string VigenciaFormatted
@@ -78,7 +88,13 @@ namespace ClubSalud.Models.ClubSalud
         }
 	}
 
-	public class UserPagingModel
+    public class EmpresaRegistro
+    {
+        public long Folio { get; set; }
+        public string Nombre { get; set; }
+    }
+
+    public class UserPagingModel
 	{
 		public List<User> Registro_de_Usuarios { get; set; }
 		public int RowCount { get; set; }
