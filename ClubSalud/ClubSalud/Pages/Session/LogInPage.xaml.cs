@@ -15,6 +15,8 @@ namespace ClubSalud.Pages.Session
 
         private NavigationManager navigation;
 
+        private Command LoginCommnad { get; set; }
+
         public LogInPage()
         {
             InitializeComponent();
@@ -29,16 +31,15 @@ namespace ClubSalud.Pages.Session
 		}
 		void InitUI()
 		{
-			TapGestureRecognizer tapLogIn = new TapGestureRecognizer();
-			tapLogIn.Tapped += TapLogIn;
-			_BtnLogIn.GestureRecognizers.Add(tapLogIn);
+            LoginCommnad = new Command(TapLogIn);
+            _BtnLogIn.Command = LoginCommnad;
 
             var tapForgotPassword = new TapGestureRecognizer();
             tapForgotPassword.Tapped += ShowForgotPasswordMessage;
             _ForgotPasswordContainer.GestureRecognizers.Add(tapForgotPassword);
 		}
 
-		async void TapLogIn(object sender, EventArgs e)
+		async void TapLogIn()
 		{
 			if (string.IsNullOrEmpty(_EntryPassword.Text) || string.IsNullOrEmpty(_EntryUsername.Text))
 			{

@@ -26,6 +26,16 @@ namespace ClubSalud.Pages.Master
 
             _master = master;
 
+
+
+            navigation = new NavigationManager();
+			
+		}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            LoadMenu();
             MessagingCenter.Subscribe<HomePage>(this, "UpdateUserInfo", (sender) =>
             {
                 _LabelNombre.Text = Helpers.UserHelper.CurrentUser().Nombre_del_Titular;
@@ -46,10 +56,7 @@ namespace ClubSalud.Pages.Master
             {
                 UpdateUserPhoto(folio);
             };
-
-            navigation = new NavigationManager();
-			LoadMenu();
-		}
+        }
 
         async void UpdateUserPhoto(int folio)
         {

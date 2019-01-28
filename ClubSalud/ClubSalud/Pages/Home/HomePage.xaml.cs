@@ -12,16 +12,18 @@ using System.Linq;
 using ClubSalud.Models.ClubSalud;
 using ClubSalud.Pages.Home;
 using ClubSalud.Utils;
+using ClubSalud.Helpers;
+using System.Threading.Tasks;
 
 namespace ClubSalud
 {
     public partial class HomePage : BaseContentPage
     {
 
-        private ObservableCollection<Dependent> Dependents;
+        private ObservableCollection<Dependent> Dependents = new ObservableCollection<Dependent>();
         private NavigationManager navigation;
 
-        private List<DetalleDeDependientesDeUsuario> ListaDependientes { set; get; }
+        private List<DetalleDeDependientesDeUsuario> ListaDependientes { set; get; } = new List<DetalleDeDependientesDeUsuario>();
 
         public HomePage()
         {
@@ -44,17 +46,17 @@ namespace ClubSalud
 
             NavigationPage.SetHasNavigationBar(this, false);
             navigation = new NavigationManager();
-            PopulatingProfile();
+           
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-
-            GetDependents();
+            await PopulatingProfile();
+            await GetDependents();
         }
 
-        async void GetDependents()
+        async Task GetDependents()
         {
             try
             {
@@ -78,7 +80,7 @@ namespace ClubSalud
                     }
                     Helpers.DependentHelper.ListaDependientes = ListaDependientes;
 
-                    PopulatingDependent();
+                    await PopulatingDependent();
                 }
 
                 DependencyService.Get<IProgress>().Dismiss();
@@ -124,8 +126,9 @@ namespace ClubSalud
             }
         }
 
-        async void PopulatingProfile()
+        async Task PopulatingProfile()
         {
+            var user = Helpers.UserHelper.CurrentUser();
             _Name.Text = App.CurrentUser.Nombre_del_Titular;
             var lastNameP = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Paterno_del_Titular);
             var lastNameM = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Materno_del_Titular);
@@ -141,7 +144,7 @@ namespace ClubSalud
             }
         }
 
-        async void PopulatingDependent()
+        async Task PopulatingDependent()
         {
             StackLayout[] layouts = new StackLayout[ListaDependientes.Count];
             TapGestureRecognizer tapChangePicture = new TapGestureRecognizer();

@@ -4,57 +4,60 @@
              x:Class="ClubSalud.Pages.Session.LogInPage"
              BackgroundImage="bgClubS.png">
     <ContentPage.Content>
-        <StackLayout Margin="28,90,28,66">
-            <Image Source="logoLogin.png" WidthRequest="300"
-                   HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Label Text="Acceso a Mi Credencial"
-                   FontSize="18"
-                   Margin="0,30,0,10"
-                   TextColor="White"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
-            <Frame Padding="0" Margin="0,0,0,20">
-                <Frame.Content>
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="mail.png" 
-                               WidthRequest="23" 
-                               HorizontalOptions="Center"
-                               Margin="5,0,0,0"
-                               VerticalOptions="Center"/>
-                        <Entry HorizontalOptions="FillAndExpand" 
-                               x:Name="_EntryUsername"/>
-                    </StackLayout>
-                </Frame.Content>
-            </Frame>
-            <Frame Padding="0" Margin="0,0,0,10">
-                <Frame.Content>
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="secure.png"
-                               WidthRequest="23" 
-                               HorizontalOptions="Center" 
-                               Margin="5,0,0,0"
-                               VerticalOptions="Center"/>
-                        <Entry IsPassword="true"
-                               HorizontalOptions="FillAndExpand"
-                               x:Name="_EntryPassword"/>
-                    </StackLayout>
-                </Frame.Content>
-            </Frame>
-            <Image Source="loginBtn.png" x:Name="_BtnLogIn" />
-            <Label x:Name="_LabelErrorLogIn" 
-                   IsVisible="false" 
-                   HorizontalOptions="CenterAndExpand"
-                   Margin="0,20,0,0"
-                   TextColor="White"/>
-            <StackLayout x:Name="_ForgotPasswordContainer" HorizontalOptions="FillAndExpand" HeightRequest="50">
-                <Label x:Name="_LabelForgotPassword"
-                   Text="¿Necesitas ayuda?" 
-                   TextColor="White"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" 
-                   FontSize="10"/>
+        <ScrollView>
+            <StackLayout Margin="28,90,28,66">
+                <Image Source="logoLogin.png" WidthRequest="300"
+                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Label Text="Acceso a Mi Credencial"
+                       FontSize="18"
+                       Margin="0,30,0,10"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+                <Frame Padding="0" Margin="0,0,0,20">
+                    <Frame.Content>
+                        <StackLayout Orientation="Horizontal">
+                            <ImageButton Source="mail.png" 
+                                   WidthRequest="23" 
+                                   HorizontalOptions="Center"
+                                   Margin="5,0,0,0"
+                                   VerticalOptions="Center"/>
+                            <Entry HorizontalOptions="FillAndExpand" 
+                                   x:Name="_EntryUsername"/>
+                        </StackLayout>
+                    </Frame.Content>
+                </Frame>
+                <Frame Padding="0" Margin="0,0,0,10">
+                    <Frame.Content>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="secure.png"
+                                   WidthRequest="23" 
+                                   HorizontalOptions="Center" 
+                                   Margin="5,0,0,0"
+                                   VerticalOptions="Center"/>
+                            <Entry IsPassword="true"
+                                   HorizontalOptions="FillAndExpand"
+                                   x:Name="_EntryPassword"/>
+                        </StackLayout>
+                    </Frame.Content>
+                </Frame>
+                <ImageButton Source="loginBtn.png" x:Name="_BtnLogIn" />
+                <Label x:Name="_LabelErrorLogIn" 
+                       IsVisible="false" 
+                       HorizontalOptions="CenterAndExpand"
+                       Margin="0,20,0,0"
+                       TextColor="White"/>
+                <StackLayout x:Name="_ForgotPasswordContainer" HorizontalOptions="FillAndExpand" HeightRequest="50">
+                    <Label x:Name="_LabelForgotPassword"
+                       Text="¿Necesitas ayuda?" 
+                       TextColor="White"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" 
+                       FontSize="10"/>
+                </StackLayout>
+                
             </StackLayout>
-            
-        </StackLayout>
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>
