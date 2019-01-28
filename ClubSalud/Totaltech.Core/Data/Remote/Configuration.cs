@@ -1,5 +1,4 @@
-﻿using System;
-namespace Totaltech.Core.Data.Services
+﻿namespace Totaltech.Core.Data.Services
 {
 	public class Configuration
 	{
