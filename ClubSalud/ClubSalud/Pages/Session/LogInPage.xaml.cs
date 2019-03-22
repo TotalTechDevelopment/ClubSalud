@@ -24,8 +24,8 @@ namespace ClubSalud.Pages.Session
 
             NavigationPage.SetHasNavigationBar(this, false);
 #if DEBUG
-            _EntryUsername.Text = "HEB-836";
-            _EntryPassword.Text = "836";
+            _EntryUsername.Text = "13600015";
+            _EntryPassword.Text = "roldan";
 #endif
             InitUI();
 		}

@@ -117,9 +117,47 @@ namespace ClubSalud.Pages.Home
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            if (Helpers.DependentHelper.CurrentDependent.Foto == null || Helpers.DependentHelper.CurrentDependent.Foto == -1 || Helpers.DependentHelper.CurrentDependent.Foto == 0)
+            var n = await DisplayActionSheet("Elige una imagen", "cancelar", null, new string[] { "Cámara", "Galería" });
+            switch (n)
             {
-                TakePictureActionSheet(_profileImage);
+                case "Cámara":
+                    var photo = await TakePhotoMedia();
+                    if (photo != null)
+                    {
+                        var post = await PostPhoto(photo);
+                        if (post != -1)
+                        {
+                            UpdateUserPhoto(post);
+                        }
+                        else
+                        {
+                            await DisplayAlert("", "Hubo un problema al actualizar la fotografía", "Ok");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("", "Hubo un problema al actualizar la fotografía", "Ok");
+                    }
+                    break;
+                case "Galería":
+                    var photoGalery = await GetPhotoGaleryMedia();
+                    if (photoGalery != null)
+                    {
+                        var post = await PostPhoto(photoGalery);
+                        if (post != -1)
+                        {
+                            UpdateUserPhoto(post);
+                        }
+                        else
+                        {
+                            await DisplayAlert("", "Hubo un problema al actualizar la fotografía", "Ok");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("", "Hubo un problema al actualizar la fotografía", "Ok");
+                    }
+                    break;
             }
 
         }

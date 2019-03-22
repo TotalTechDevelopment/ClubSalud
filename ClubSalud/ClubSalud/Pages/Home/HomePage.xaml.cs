@@ -14,6 +14,7 @@ using ClubSalud.Pages.Home;
 using ClubSalud.Utils;
 using ClubSalud.Helpers;
 using System.Threading.Tasks;
+using ClubSalud.Pages.Master;
 
 namespace ClubSalud
 {
@@ -46,7 +47,9 @@ namespace ClubSalud
 
             NavigationPage.SetHasNavigationBar(this, false);
             navigation = new NavigationManager();
-           
+            MessagingCenter.Subscribe<DrawerPage>(this, "UpdateUserInfoHome",(sender)=> {
+                LoadUserPhoto();
+            });
         }
 
         protected async override void OnAppearing()
@@ -110,7 +113,7 @@ namespace ClubSalud
                 if (resp != -1)
                 {
                     MessagingCenter.Send<HomePage>(this, "UpdateUserInfo");
-
+                    LoadUserPhoto();
                     await DisplayAlert("", "Fotografía actualizada correctamente", "Ok");
                 }
                 else
@@ -126,12 +129,34 @@ namespace ClubSalud
             }
         }
 
+        async void LoadUserPhoto()
+        {
+            try
+            {
+                var userImage = await App.CurrentApp.Services.GetImage((int)Helpers.UserHelper.CurrentUser().Foto_de_Perfil);
+                _profileImage.Source = userImage;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+
         async Task PopulatingProfile()
         {
             var user = Helpers.UserHelper.CurrentUser();
             _Name.Text = App.CurrentUser.Nombre_del_Titular;
-            var lastNameP = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Paterno_del_Titular);
-            var lastNameM = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Materno_del_Titular);
+            string lastNameP = string.Empty;
+            string lastNameM = string.Empty;
+            if (!string.IsNullOrEmpty(App.CurrentUser.Apellido_Paterno_del_Titular))
+            {
+                lastNameP = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Paterno_del_Titular);
+            }
+            if(!string.IsNullOrEmpty(App.CurrentUser.Apellido_Materno_del_Titular))
+            {
+                lastNameM = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Materno_del_Titular);
+            }
+            
             _LastName.Text = lastNameP + " " + lastNameM;
             _Member.Text = App.CurrentUser.Numero_de_Seguro;
             _Vigencia.Text = App.CurrentUser.VigenciaFormatted;
@@ -216,10 +241,50 @@ namespace ClubSalud
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil == -1)
+            
+            var n = await DisplayActionSheet("Elige una imagen", "cancelar", null, new string[] { "Cámara", "Galería" });
+            switch (n)
             {
-				TakePictureActionSheet(_profileImage);
+                case "Cámara":
+                    var photo = await TakePhotoMedia();
+                    if(photo != null)
+                    {
+                        var post = await PostPhoto(photo);
+                        if(post != -1)
+                        {
+                            UpdateUserPhoto(post);
+                        }
+                        else
+                        {
+                            await DisplayAlert("", "Hubo un problema al actualizar la fotografía", "Ok");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("", "Hubo un problema al actualizar la fotografía", "Ok");
+                    }
+                    break;
+                case "Galería":
+                    var photoGalery = await GetPhotoGaleryMedia();
+                    if (photoGalery != null)
+                    {
+                        var post = await PostPhoto(photoGalery);
+                        if (post != -1)
+                        {
+                            UpdateUserPhoto(post);
+                        }
+                        else
+                        {
+                            await DisplayAlert("", "Hubo un problema al actualizar la fotografía", "Ok");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("", "Hubo un problema al actualizar la fotografía", "Ok");
+                    }
+                    break;
             }
+            
         }
     }
 }

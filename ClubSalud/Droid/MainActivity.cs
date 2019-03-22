@@ -4,8 +4,6 @@ using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
 using Android.Support.V4.App;
 using Plugin.Permissions;
@@ -42,6 +40,8 @@ namespace ClubSalud.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        
 
         private Action<int, Result, Intent> _resultCallback;
 
