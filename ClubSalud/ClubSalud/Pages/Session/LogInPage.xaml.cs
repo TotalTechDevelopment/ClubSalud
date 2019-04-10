@@ -24,8 +24,8 @@ namespace ClubSalud.Pages.Session
 
             NavigationPage.SetHasNavigationBar(this, false);
 #if DEBUG
-            _EntryUsername.Text = "13600015";
-            _EntryPassword.Text = "roldan";
+            _EntryUsername.Text = "1360001";
+            _EntryPassword.Text = "ELIZONDO";
 #endif
             InitUI();
 		}
@@ -59,8 +59,15 @@ namespace ClubSalud.Pages.Session
 						if (res.Registro_de_Usuarios[0].Contrasena.Equals(_EntryPassword.Text))
 						{
 							var user = res.Registro_de_Usuarios.FirstOrDefault();
-                            Helpers.UserHelper.SaveUserInfo(user);
-                            App.CurrentApp.MainPage = new NavigationPage(new MasterPage());
+                            if(user.Estatus == 1)
+                            {
+                                Helpers.UserHelper.SaveUserInfo(user);
+                                App.CurrentApp.MainPage = new NavigationPage(new MasterPage());
+                            }
+                            else if(user.Estatus == 2)
+                            {
+                                await DisplayAlert("Alerta", "La vigencia de tu cuenta a vencido, contactate con nosotros para renovar tu cuenta.", "Ok");
+                            }
 						}
 						else
 						{

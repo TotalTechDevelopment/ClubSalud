@@ -43,7 +43,6 @@ namespace ClubSalud
             {
                 MainPage = new NavigationPage(new MasterPage());
             }
-            
         }
 
         public void ChangeToRootPage()
@@ -51,6 +50,8 @@ namespace ClubSalud
             MainPage = new NavigationPage(new MasterPage());
         }
 
+        
+        
         protected override void OnSleep()
         {
             // Handle when your app sleeps

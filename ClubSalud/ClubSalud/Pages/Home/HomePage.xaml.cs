@@ -15,6 +15,8 @@ using ClubSalud.Utils;
 using ClubSalud.Helpers;
 using System.Threading.Tasks;
 using ClubSalud.Pages.Master;
+using ClubSalud.Pages.Session;
+using ClubSalud.DB;
 
 namespace ClubSalud
 {
@@ -55,8 +57,41 @@ namespace ClubSalud
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await PopulatingProfile();
-            await GetDependents();
+            await ValidateStatusUser();
+            var user = UserHelper.CurrentUser();
+            if (user != null)
+            {
+                if(user.Estatus == 2)
+                {
+                    UserHelper.Logout();
+                    await DisplayAlert("Alerta", "La vigencia de tu cuenta a vencido, contactate con nosotros para renovar tu cuenta.", "Ok");
+                    Application.Current.MainPage = new LogInPage();
+                }
+                else if(user.Estatus == 1)
+                {
+                    await PopulatingProfile();
+                    await GetDependents();
+                }
+            }
+        }
+        ClubSaludDatabase dbConnection = new ClubSaludDatabase();
+        public async Task ValidateStatusUser()
+        {
+            DependencyService.Get<IProgress>().ShowProgress("Cargando");
+            var user = Helpers.UserHelper.CurrentUser();
+            if (user != null)
+            {
+                
+                string where = "Clave_de_Acceso='" + user.Clave_de_Acceso + "' ";
+                var res = await App.CurrentApp.Services.ListaSelAll<UserPagingModel>(User.TABLE_NAME, 0, 1, where);
+                if (res.Registro_de_Usuarios != null && res.RowCount > 0)
+                {
+                    var u = res.Registro_de_Usuarios[0];
+                    u.EmpresaNombre = u.Empresa_Registro_de_Empresa != null ? u.Empresa_Registro_de_Empresa.Nombre : "";
+                    dbConnection.UpdateUser(u);
+                }
+            }
+            DependencyService.Get<IProgress>().Dismiss();
         }
 
         async Task GetDependents()

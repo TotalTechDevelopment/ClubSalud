@@ -41,7 +41,7 @@
                         </StackLayout>
                     </Frame.Content>
                 </Frame>
-                <ImageButton Source="loginBtn.png" x:Name="_BtnLogIn" />
+                <ImageButton Source="loginBtn.png" x:Name="_BtnLogIn" BackgroundColor="Transparent" BorderColor="Transparent" />
                 <Label x:Name="_LabelErrorLogIn" 
                        IsVisible="false" 
                        HorizontalOptions="CenterAndExpand"
