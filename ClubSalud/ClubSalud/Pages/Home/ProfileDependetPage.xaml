@@ -15,19 +15,19 @@
                 <Frame.Content>
                     <Grid VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="180"/>
+                            <RowDefinition Height="120"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Grid>
-                            <ffimageloading:CachedImage x:Name="_profileImage" Source="no_image.png" Grid.Row="0" VerticalOptions="Start">
-                                <ffimageloading:CachedImage.Transformations>
-                                    <fftransformations:CircleTransformation />
-                                </ffimageloading:CachedImage.Transformations>
-                            </ffimageloading:CachedImage>
-                            <Grid.GestureRecognizers>
+                        <ffimageloading:CachedImage  Margin="0,16,0,0"  HeightRequest="120" WidthRequest="120" x:Name="_profileImage" Source="no_image.png" Grid.Row="0" VerticalOptions="Start">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CircleTransformation />
+                            </ffimageloading:CachedImage.Transformations>
+                            <ffimageloading:CachedImage.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ChangePicture" />
-                            </Grid.GestureRecognizers>
-                        </Grid>
+                            </ffimageloading:CachedImage.GestureRecognizers>
+                        </ffimageloading:CachedImage>
+                        
+                        
                         <StackLayout Margin="16" VerticalOptions="FillAndExpand" Grid.Row="1">
                             <Label Text="Nombre del dependiente" 
                                    FontSize="20"

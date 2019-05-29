@@ -180,16 +180,16 @@ namespace ClubSalud
         async Task PopulatingProfile()
         {
             var user = Helpers.UserHelper.CurrentUser();
-            _Name.Text = App.CurrentUser.Nombre_del_Titular;
+            _Name.Text = App.CurrentUser.Nombre;
             string lastNameP = string.Empty;
             string lastNameM = string.Empty;
-            if (!string.IsNullOrEmpty(App.CurrentUser.Apellido_Paterno_del_Titular))
+            if (!string.IsNullOrEmpty(App.CurrentUser.Apellido_Paterno))
             {
-                lastNameP = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Paterno_del_Titular);
+                lastNameP = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Paterno);
             }
-            if(!string.IsNullOrEmpty(App.CurrentUser.Apellido_Materno_del_Titular))
+            if(!string.IsNullOrEmpty(App.CurrentUser.Apellido_Materno))
             {
-                lastNameM = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Materno_del_Titular);
+                lastNameM = AppViewUtils.RemoveWhiteSpaces(App.CurrentUser.Apellido_Materno);
             }
             
             _LastName.Text = lastNameP + " " + lastNameM;

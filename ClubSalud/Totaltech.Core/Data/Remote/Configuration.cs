@@ -4,10 +4,10 @@
 	{
         //http://192.168.1.101/WebApiClubSegurov1_0_1/
         //http://www.totalcase.com.mx/WebApiClubSeguroDEMO4/
-        static string baseURL = "http://192.168.1.101/WebApiClubSegurov1_0_1/";
+        static string baseURL = "http://www.totalcase.com.mx/WebApiClubSeguroDEMO5/";
 
-        public const string BASE_WEBAPI_URL = "WebApiClubSegurov1_0_1";
-		public const string IMG_URL = "http://192.168.1.101/" + BASE_WEBAPI_URL + "/api/Spartan_File/Files/";
+        public const string BASE_WEBAPI_URL = "WebApiClubSeguroDEMO5";
+		public const string IMG_URL = "http://www.totalcase.com.mx/" + BASE_WEBAPI_URL + "/api/Spartan_File/Files/";
 
 		public static string BaseURL
 		{
