@@ -64,7 +64,7 @@ namespace ClubSalud
                 if(user.Estatus == 2)
                 {
                     UserHelper.Logout();
-                    await DisplayAlert("Alerta", "La vigencia de tu cuenta a vencido, contactate con nosotros para renovar tu cuenta.", "Ok");
+                    await DisplayAlert("Alerta", "La Vigencia de tu Membresía ha vencido.\nPara Renovación puedes contactar a tu Asesor o llamar a Club Salud Familiar a los teléfonos 13667893 y 94.", "Ok");
                     Application.Current.MainPage = new LogInPage();
                 }
                 else if(user.Estatus == 1)
@@ -176,7 +176,7 @@ namespace ClubSalud
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
-
+        private bool existImage;
         async Task PopulatingProfile()
         {
             var user = Helpers.UserHelper.CurrentUser();
@@ -197,10 +197,15 @@ namespace ClubSalud
             _Vigencia.Text = App.CurrentUser.VigenciaFormatted;
             _Empresa.Text = App.CurrentUser.EmpresaNombre;
             var image = "";
-            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != -1)
+            if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != -1 && Helpers.UserHelper.CurrentUser().Foto_de_Perfil != null)
             {
                 image = await  App.CurrentApp.Services.GetImage((int) Helpers.UserHelper.CurrentUser().Foto_de_Perfil);
                 _profileImage.Source = image;
+                existImage = true;
+            }
+            else
+            {
+                _profileImage.Source = "no_image.png";
             }
         }
 
@@ -276,7 +281,11 @@ namespace ClubSalud
 
         async void ChangePicture(object sender, EventArgs e)
         {
-            
+            if (existImage)
+            {
+                await DisplayAlert("Alerta", "No es posible reemplazar la fotografía, si necesitas cambiarla \ndebes acceder al menú principal y dar click en la opción “¿Necesitas ayuda?”", "Ok");
+                return;
+            }
             var n = await DisplayActionSheet("Elige una imagen", "cancelar", null, new string[] { "Cámara", "Galería" });
             switch (n)
             {

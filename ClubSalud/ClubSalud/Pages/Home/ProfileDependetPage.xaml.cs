@@ -31,7 +31,7 @@ namespace ClubSalud.Pages.Home
 
             InitInfo();
 		}
-
+        private bool existImage;
         async void InitInfo()
         {
             var dependent = Helpers.DependentHelper.CurrentDependent;
@@ -48,6 +48,7 @@ namespace ClubSalud.Pages.Home
             {
                 image = await App.CurrentApp.Services.GetImage((int)dependent.Foto);
                 _profileImage.Source = image;
+                existImage = true;
             }
             else
             {
@@ -73,6 +74,7 @@ namespace ClubSalud.Pages.Home
                 if (resp != -1)
                 {
                     await DisplayAlert("", "Fotografía actualizada correctamente", "Ok");
+                    LoadUserPhoto();
                 }
                 else
                 {
@@ -82,7 +84,27 @@ namespace ClubSalud.Pages.Home
             catch (Exception ex)
             {
                 DependencyService.Get<IProgress>().Dismiss();
-
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+        async void LoadUserPhoto()
+        {
+            try
+            {
+                var dependent = Helpers.DependentHelper.CurrentDependent;
+                var image = "";
+                if (dependent.Foto != null && dependent.Foto != -1 && dependent.Foto != 0)
+                {
+                    image = await App.CurrentApp.Services.GetImage((int)dependent.Foto);
+                    _profileImage.Source = image;
+                }
+                else
+                {
+                    _profileImage.Source = "no_image.png";
+                }
+            }
+            catch (Exception ex)
+            {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
@@ -117,6 +139,11 @@ namespace ClubSalud.Pages.Home
 
         async void ChangePicture(object sender, EventArgs e)
         {
+            if (existImage)
+            {
+                await DisplayAlert("Alerta", "No es posible reemplazar la fotografía, si necesitas cambiarla \ndebes acceder al menú principal y dar click en la opción “¿Necesitas ayuda?”", "Ok");
+                return;
+            }
             var n = await DisplayActionSheet("Elige una imagen", "cancelar", null, new string[] { "Cámara", "Galería" });
             switch (n)
             {

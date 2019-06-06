@@ -24,8 +24,8 @@ namespace ClubSalud.Pages.Session
 
             NavigationPage.SetHasNavigationBar(this, false);
 #if DEBUG
-            _EntryUsername.Text = "1360007";
-            _EntryPassword.Text = "HERNANDEZ";
+            _EntryUsername.Text = "13600011";
+            _EntryPassword.Text = "GARCIA";
 #endif
             InitUI();
 		}
@@ -66,7 +66,7 @@ namespace ClubSalud.Pages.Session
                             }
                             else if(user.Estatus == 2)
                             {
-                                await DisplayAlert("Alerta", "La vigencia de tu cuenta a vencido, contactate con nosotros para renovar tu cuenta.", "Ok");
+                                await DisplayAlert("Alerta", "La Vigencia de tu Membresía ha vencido.\nPara Renovación puedes contactar a tu Asesor o llamar a Club Salud Familiar a los teléfonos 13667893 y 94.", "Ok");
                             }
 						}
 						else

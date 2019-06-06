@@ -5202,6 +5202,9 @@ namespace ClubSalud.Droid
 			// aapt resource value: 0x7f0c0006
 			public const int Theme_MediaRouter_LightControlPanel = 2131492870;
 			
+			// aapt resource value: 0x7f0c0192
+			public const int Theme_Splash = 2131493266;
+			
 			// aapt resource value: 0x7f0c0116
 			public const int ThemeOverlay_AppCompat = 2131493142;
 			

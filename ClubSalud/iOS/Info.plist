@@ -8,8 +8,6 @@
 	<string>ClubSalud</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.totaltech.ClubSalud</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -42,7 +40,15 @@
 	<string>¿Podemos accesar a tu camara?</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>¿Podemos acceder a tus fotografías?</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Necesitamos permisos para acceder a tu calendario y obtener información de la vigencia de tus servicios.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Necesitamos acceso a tu hubicación para obtener información de tus servicios.</string>
+	<key>NSLocationWhenInUseUsageDescription </key>
+	<string>Necesitamos acceso a tu hubicación para obtener información de tus servicios.</string>
+	<key>CFBundleVersion</key>
+	<string>4</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2</string>
+	<string>4</string>
 </dict>
 </plist>
