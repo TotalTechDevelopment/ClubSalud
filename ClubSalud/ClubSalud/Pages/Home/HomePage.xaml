@@ -26,6 +26,8 @@
                             <StackLayout Margin="16" VerticalOptions="FillAndExpand" Grid.Row="1">
                                 <Label Text="" x:Name="_Name" FontSize="20" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" />
                                 <Label Text="" x:Name="_LastName" FontSize="20" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" />
+                                <Label Text="Fecha Actual" HorizontalOptions="Center" FontAttributes="Bold" TextColor="#132967" FontSize="15" HeightRequest="30" />
+                                <Label x:Name="_LabelFecha" HorizontalOptions="Center" TextColor="#132967" FontSize="12" HeightRequest="30" />
                                 <StackLayout BackgroundColor="{StaticResource PrimaryColor}" HorizontalOptions="FillAndExpand">
                                     <Label Text="Titular" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="18" TextColor="White" />
                                 </StackLayout>

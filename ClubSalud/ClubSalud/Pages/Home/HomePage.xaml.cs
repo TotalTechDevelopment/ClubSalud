@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using ClubSalud.Pages.Master;
 using ClubSalud.Pages.Session;
 using ClubSalud.DB;
+using Xamarin.Essentials;
 
 namespace ClubSalud
 {
@@ -57,6 +58,7 @@ namespace ClubSalud
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            VersionTracking.Track();
             await ValidateStatusUser();
             var user = UserHelper.CurrentUser();
             if (user != null)
@@ -196,6 +198,8 @@ namespace ClubSalud
             _Member.Text = App.CurrentUser.Numero_de_Seguro;
             _Vigencia.Text = App.CurrentUser.VigenciaFormatted;
             _Empresa.Text = App.CurrentUser.EmpresaNombre;
+            var date = DateTime.Now;
+            _LabelFecha.Text = date.DayOfWeek + ", " + date.Day + " de " + date.ToString("MMMM") + " del " + date.Year;
             var image = "";
             if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != -1 && Helpers.UserHelper.CurrentUser().Foto_de_Perfil != null)
             {

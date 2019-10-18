@@ -5,18 +5,20 @@ using ClubSalud.Managers;
 using ClubSalud.Models;
 using ClubSalud.Models.ClubSalud;
 using ClubSalud.Pages.Master;
+using ClubSalud.PopUps;
 using ClubSalud.Providers;
+using Rg.Plugins.Popup.Extensions;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace ClubSalud.Pages.Session
 {
     public partial class LogInPage : ContentPage
     {
-
         private NavigationManager navigation;
 
         private Command LoginCommnad { get; set; }
-
+        
         public LogInPage()
         {
             InitializeComponent();
@@ -37,9 +39,20 @@ namespace ClubSalud.Pages.Session
             var tapForgotPassword = new TapGestureRecognizer();
             tapForgotPassword.Tapped += ShowForgotPasswordMessage;
             _ForgotPasswordContainer.GestureRecognizers.Add(tapForgotPassword);
+            //VERSION TRACKING
+            if (VersionTracking.IsFirstLaunchEver)
+            {
+                //SHOW Privacy Policy
+                ShowPopUp();
+            }
 		}
 
-		async void TapLogIn()
+        private async void ShowPopUp()
+        {
+            await Navigation.PushPopupAsync(new PrivacyPolicy());
+        }
+
+        async void TapLogIn()
 		{
 			if (string.IsNullOrEmpty(_EntryPassword.Text) || string.IsNullOrEmpty(_EntryUsername.Text))
 			{

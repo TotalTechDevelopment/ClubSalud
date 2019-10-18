@@ -39,6 +39,7 @@ namespace ClubSalud.Pages.Master
             MessagingCenter.Subscribe<HomePage>(this, "UpdateUserInfo", (sender) =>
             {
                 _LabelNombre.Text = Helpers.UserHelper.CurrentUser().Nombre_del_Titular;
+
                 LoadUserPhoto();
             });
 
@@ -56,6 +57,7 @@ namespace ClubSalud.Pages.Master
             {
                 UpdateUserPhoto(folio);
             };
+
         }
 
         async void UpdateUserPhoto(int folio)
