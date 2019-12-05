@@ -35,7 +35,9 @@ namespace ClubSalud.Pages.Home
         async void InitInfo()
         {
             var dependent = Helpers.DependentHelper.CurrentDependent;
-
+            var culture = new System.Globalization.CultureInfo("es-MX");
+            var date = DateTime.Now;
+            _LabelFecha.Text = culture.DateTimeFormat.GetDayName(date.DayOfWeek) + ", " + date.Day + " de " + date.ToString("MMMM") + " del " + date.Year;
             _DependentName.Text = dependent.Nombre;
             var lastNameP = AppViewUtils.RemoveWhiteSpaces(dependent.Apellido_Paterno);
             var lastNameM = AppViewUtils.RemoveWhiteSpaces(dependent.Apellido_Materno);

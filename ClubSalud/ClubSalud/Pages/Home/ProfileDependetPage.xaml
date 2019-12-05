@@ -27,8 +27,10 @@
                             </ffimageloading:CachedImage.GestureRecognizers>
                         </ffimageloading:CachedImage>
                         
-                        
+
                         <StackLayout Margin="16" VerticalOptions="FillAndExpand" Grid.Row="1">
+                            <Label Text="Fecha Actual" HorizontalOptions="Center" FontAttributes="Bold" TextColor="#132967" FontSize="15" HeightRequest="30" />
+                            <Label x:Name="_LabelFecha" HorizontalOptions="Center" TextColor="#132967" FontSize="12" HeightRequest="30" />
                             <Label Text="Nombre del dependiente" 
                                    FontSize="20"
                                    VerticalOptions="Start"

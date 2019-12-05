@@ -198,8 +198,9 @@ namespace ClubSalud
             _Member.Text = App.CurrentUser.Numero_de_Seguro;
             _Vigencia.Text = App.CurrentUser.VigenciaFormatted;
             _Empresa.Text = App.CurrentUser.EmpresaNombre;
+            var culture = new System.Globalization.CultureInfo("es-MX");
             var date = DateTime.Now;
-            _LabelFecha.Text = date.DayOfWeek + ", " + date.Day + " de " + date.ToString("MMMM") + " del " + date.Year;
+            _LabelFecha.Text = culture.DateTimeFormat.GetDayName(date.DayOfWeek) + ", " + date.Day + " de " + date.ToString("MMMM") + " del " + date.Year;
             var image = "";
             if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != -1 && Helpers.UserHelper.CurrentUser().Foto_de_Perfil != null)
             {
