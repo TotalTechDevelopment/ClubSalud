@@ -31,7 +31,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Image Source="image.png" Grid.Row="0" Grid.RowSpan="7" Aspect="AspectFill"/>
-        <Image Source="logo_toolbar" Grid.Row="1"/>
+        <Image Source="logo_toolbar" Grid.Row="1" Aspect="AspectFit" Margin="7"/>
         <Label Text="Aviso de Privacidad" FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Grid.Row="2"/>
         <Label Text="¡Gracias por utilizar nuestros servicios! Revise nuestro aviso de privacidad." HorizontalTextAlignment="Center" TextColor="White" Grid.Row="3"/>
         <Button Grid.Row="4" Text="Consultar Aviso de Privacidad" TextColor="White" BackgroundColor="Transparent" CornerRadius="25" HorizontalOptions="Center" VerticalOptions="Center"

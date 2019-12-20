@@ -200,7 +200,7 @@ namespace ClubSalud
             _Empresa.Text = App.CurrentUser.EmpresaNombre;
             var culture = new System.Globalization.CultureInfo("es-MX");
             var date = DateTime.Now;
-            _LabelFecha.Text = culture.DateTimeFormat.GetDayName(date.DayOfWeek) + ", " + date.Day + " de " + date.ToString("MMMM") + " del " + date.Year;
+            _LabelFecha.Text = culture.DateTimeFormat.GetDayName(date.DayOfWeek) + ", " + date.Day + " de " + culture.DateTimeFormat.GetMonthName(date.Month) + " del " + date.Year;
             var image = "";
             if (Helpers.UserHelper.CurrentUser().Foto_de_Perfil != -1 && Helpers.UserHelper.CurrentUser().Foto_de_Perfil != null)
             {
