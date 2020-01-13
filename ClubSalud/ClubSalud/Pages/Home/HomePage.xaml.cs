@@ -18,6 +18,8 @@ using ClubSalud.Pages.Master;
 using ClubSalud.Pages.Session;
 using ClubSalud.DB;
 using Xamarin.Essentials;
+using Rg.Plugins.Popup.Extensions;
+using ClubSalud.PopUps;
 
 namespace ClubSalud
 {
@@ -28,7 +30,7 @@ namespace ClubSalud
         private NavigationManager navigation;
 
         private List<DetalleDeDependientesDeUsuario> ListaDependientes { set; get; } = new List<DetalleDeDependientesDeUsuario>();
-
+        private bool PrivacityModalShown = false;
         public HomePage()
         {
             InitializeComponent();
@@ -59,6 +61,12 @@ namespace ClubSalud
         {
             base.OnAppearing();
             VersionTracking.Track();
+            if (VersionTracking.IsFirstLaunchEver && !PrivacityModalShown)
+            {
+                PrivacityModalShown = true;
+                //SHOW Privacy Policy
+                ShowPopUp();
+            }
             await ValidateStatusUser();
             var user = UserHelper.CurrentUser();
             if (user != null)
@@ -333,7 +341,11 @@ namespace ClubSalud
                     }
                     break;
             }
-            
+        }
+
+        private async void ShowPopUp()
+        {
+            await Navigation.PushPopupAsync(new PrivacyPolicy());
         }
     }
 }
