@@ -17,8 +17,8 @@ namespace ClubSalud.iOS
 
             LoadApplication(new App());
 
-            FFImageLoading.Forms.Touch.CachedImageRenderer.Init();
-			var dummy = new FFImageLoading.Forms.Touch.CachedImageRenderer();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+			var dummy = new FFImageLoading.Forms.Platform.CachedImageRenderer();
 			var ignore = new CircleTransformation();
 
             return base.FinishedLaunching(app, options);

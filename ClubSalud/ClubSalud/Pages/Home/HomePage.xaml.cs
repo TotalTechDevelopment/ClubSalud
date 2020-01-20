@@ -249,7 +249,6 @@ namespace ClubSalud
                     HeightRequest = 50,
                     CacheDuration = TimeSpan.FromDays(30),
                     DownsampleToViewSize = true,
-                    TransparencyEnabled = false,
                     //ErrorPlaceholder = string.IsNullOrEmpty(userImage)? "no_image.png" : userImage,
                     Source = !string.IsNullOrEmpty(userImage) ? userImage : "no_image.png"
                 };
