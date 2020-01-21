@@ -20,13 +20,13 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
     <!--You can use any elements here which are extended from Xamarin.Forms.View-->
-    <Grid Padding="50,150,50,30" >
+    <Grid Padding="20,150,20,30" >
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="70"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
@@ -35,7 +35,7 @@
         <Label Text="Aviso de Privacidad" FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Grid.Row="2"/>
         <Label Text="¡Gracias por utilizar nuestros servicios! Revise nuestro aviso de privacidad." HorizontalTextAlignment="Center" TextColor="White" Grid.Row="3"/>
         <Button Grid.Row="4" Text="Consultar Aviso de Privacidad" TextColor="White" BackgroundColor="Transparent" CornerRadius="25" HorizontalOptions="Center" VerticalOptions="Center"
-                HeightRequest="50" BorderWidth="1" BorderColor="White" Clicked="Button_Clicked"/>
+                HeightRequest="75" BorderWidth="1" BorderColor="White" Clicked="Button_Clicked"/>
         <Button x:Name="AgreedBtn" Grid.Row="5" BackgroundColor="White" Text="Aceptar" TextColor="#0b246b" CornerRadius="25"  HeightRequest="50" WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center"
                 Clicked="AgreedBtn_Clicked"/>
     </Grid>
