@@ -46,9 +46,9 @@
 	<string>Necesitamos acceso a tu hubicación para obtener información de tus servicios.</string>
 	<key>NSLocationWhenInUseUsageDescription </key>
 	<string>Necesitamos acceso a tu hubicación para obtener información de tus servicios.</string>
-	<key>CFBundleVersion</key>
-	<string>4</string>
 	<key>CFBundleShortVersionString</key>
 	<string>4</string>
+	<key>CFBundleVersion</key>
+	<string>5</string>
 </dict>
 </plist>
