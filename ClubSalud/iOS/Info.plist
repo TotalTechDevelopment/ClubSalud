@@ -37,18 +37,20 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>NSCameraUsageDescription</key>
-	<string>¿Podemos accesar a tu camara?</string>
+	<string>Necesitamos acceder a tu cámara para poder capturar fotografias de documentacion relacionada con tus servicios.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>¿Podemos acceder a tus fotografías?</string>
+	<string>Necesitamos acceder a tus fotografias para obtener informacion relacionada con tus servicios.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Necesitamos permisos para acceder a tu calendario y obtener información de la vigencia de tus servicios.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Necesitamos acceso a tu hubicación para obtener información de tus servicios.</string>
+	<string>Necesitamos acceso a tu ubicación para obtener información de tus servicios.</string>
 	<key>NSLocationWhenInUseUsageDescription </key>
-	<string>Necesitamos acceso a tu hubicación para obtener información de tus servicios.</string>
-	<key>CFBundleShortVersionString</key>
-	<string>4</string>
+	<string>Necesitamos acceso a tu ubicación para obtener información de tus servicios.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Necesitamos acceso a tu ubicación para obtener información de tus servicios.</string>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>7</string>
 </dict>
 </plist>

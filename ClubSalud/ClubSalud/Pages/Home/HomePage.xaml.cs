@@ -30,6 +30,7 @@ namespace ClubSalud
         private NavigationManager navigation;
 
         private List<DetalleDeDependientesDeUsuario> ListaDependientes { set; get; } = new List<DetalleDeDependientesDeUsuario>();
+
         private bool PrivacityModalShown = false;
         public HomePage()
         {
@@ -219,6 +220,18 @@ namespace ClubSalud
             else
             {
                 _profileImage.Source = "no_image.png";
+            }
+
+
+            var seguroAccidenteResponse = await App.CurrentApp.Services.ExecutePost(new Totaltech.Core.Data.Models.QueryModel()
+            {
+                Query = $"Select Poliza_Accidentes FROM Registro_de_Usuario WHERE Folio = {Helpers.UserHelper.CurrentUser().Folio}"
+            });
+
+            if (!string.IsNullOrEmpty(seguroAccidenteResponse))
+            {
+                ImageSeguroAccidente.Source = Totaltech.Core.Data.Services.Configuration.IMG_URL + "logoseguroaccidentes.jpg";
+                SeguroAccidente.Text = seguroAccidenteResponse;
             }
         }
 

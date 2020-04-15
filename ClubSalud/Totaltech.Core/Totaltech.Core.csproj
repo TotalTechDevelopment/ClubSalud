@@ -87,6 +87,7 @@
     <Compile Include="Data\Models\Cupon.cs" />
     <Compile Include="Data\Models\UbicacionEcoworker.cs" />
     <Compile Include="Data\Models\Spartanfile.cs" />
+    <Compile Include="Data\Models\QueryModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="DotNetCross.Memory.Unsafe">

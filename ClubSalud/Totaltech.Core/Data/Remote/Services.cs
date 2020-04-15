@@ -78,6 +78,7 @@ namespace Totaltech.Core.Data.Services
 
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
+
             string url = Configuration.BaseURL + "api/" + table + "/";
             if (callType == CallType.Get)
             {
@@ -144,6 +145,38 @@ namespace Totaltech.Core.Data.Services
             return httpClient;
         }
 
+
+        async Task<HttpClient> GetHttpClientPostQuery()
+        {
+
+            HttpClient httpClient = null;
+            try
+            {
+                httpClient = new HttpClient();
+            }
+            catch
+            {
+                return null;
+            }
+            httpClient.Timeout = TimeSpan.FromSeconds(60);
+            httpClient.DefaultRequestHeaders.ExpectContinue = true;
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.AcceptCharset.Add(new StringWithQualityHeaderValue("UTF-8"));
+            httpClient.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("UTF-8"));
+            string token = await TokenManager.GetToken();
+
+            System.Diagnostics.Debug.WriteLine("TOKEN: " + token);
+
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+
+            string url = Configuration.BaseURL + "api/Spartan_Query/Post/";
+
+            httpClient.BaseAddress = new Uri(url);
+
+            return httpClient;
+        }
+
         public async Task<T> ListaSelAll<T>(string table, int start = 1, int rows = 1, string where = "", string order = "")
         {
             try
@@ -165,6 +198,34 @@ namespace Totaltech.Core.Data.Services
 
                 System.Diagnostics.Debug.WriteLine(string.Format("{0} {1}", ex.Message, ex.StackTrace));
                 return default(T);
+            }
+        }
+
+
+        public async Task<string> ExecutePost(QueryModel query)
+        {
+            try
+            {
+                var client = await GetHttpClientPostQuery();
+                var json = JsonConvert.SerializeObject(query);
+                HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("", content);
+                var result = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    var value =  await response.Content.ReadAsStringAsync();
+
+                    if (value != null &&  value != "null")
+                        return value?.Trim()?.Replace("\"", "") ?? string.Empty;
+
+                    return string.Empty;
+                }
+                return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return string.Empty;
             }
         }
 
