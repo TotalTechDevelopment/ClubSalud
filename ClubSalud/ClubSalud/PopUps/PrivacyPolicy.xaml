@@ -42,7 +42,7 @@
         <Image Source="logo_toolbar" Grid.Row="1" Aspect="AspectFit" Margin="7"/>
         <Label Text="Aviso de Privacidad" FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" Grid.Row="2"/>
         <Label Text="¡Gracias por utilizar nuestros servicios! Revise nuestro aviso de privacidad." HorizontalTextAlignment="Center" TextColor="White" Grid.Row="3"/>
-        <Button Grid.Row="4" Text="Consultar Aviso de Privacidad" Padding="2" TextColor="White" BackgroundColor="Transparent" CornerRadius="25" HorizontalOptions="Center" VerticalOptions="Center"
+        <Button Grid.Row="4" Text="Consultar Aviso de Privacidad" TextColor="White" BackgroundColor="Transparent" CornerRadius="25" HorizontalOptions="Center" VerticalOptions="Center"
                 HeightRequest="75" BorderWidth="1" BorderColor="White" Clicked="Button_Clicked"/>
         <Button x:Name="AgreedBtn" Grid.Row="5" BackgroundColor="White" Text="Aceptar" TextColor="#0b246b" CornerRadius="25"  HeightRequest="50" WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center"
                 Clicked="AgreedBtn_Clicked"/>
