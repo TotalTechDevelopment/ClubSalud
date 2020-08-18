@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="ClubSalud.Pages.Home.ProfileDependetPage"
              Title="Perfil Dependiente"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
              xmlns:Bases="clr-namespace:ClubSalud.Bases;assembly=ClubSalud"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations">
     <local:BaseContentPage.Content>
@@ -43,8 +45,14 @@
                                        VerticalOptions="CenterAndExpand"
                                        FontSize="18" 
                                        TextColor="White"
+                                       HorizontalTextAlignment="Center"
                                         x:Name="_DependentName"/>
-                                <Label Text="" x:Name="_LastName" FontSize="18" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text=""
+                                       x:Name="_LastName"
+                                       FontSize="18"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       HorizontalOptions="CenterAndExpand" TextColor="White" />
                             </StackLayout>
                             <StackLayout BackgroundColor="{StaticResource WhiteMoon}"
                                          HorizontalOptions="FillAndExpand">

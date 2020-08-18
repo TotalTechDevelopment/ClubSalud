@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using ClubSalud.Managers;
 using ClubSalud.Models.Menu;
@@ -9,6 +8,8 @@ using ClubSalud.Models.ClubSalud;
 using ClubSalud.Pages.Directory;
 using ClubSalud.Pages.Depedent;
 using ClubSalud.Pages.Session;
+using System.Collections.Generic;
+using Xamarin.Essentials;
 
 namespace ClubSalud.Pages.Master
 {
@@ -102,68 +103,79 @@ namespace ClubSalud.Pages.Master
             {
                 LoadUserPhoto();
             }
-
-			menuItems = new ObservableCollection<ItemMenu>();
-			string[] titles = new string[] { "Inicio", "Directorio", "Mis dependientes", "¿Necesitas ayuda?", "Salir" };
-            string[] icons = new string[] { "home.png", "book.png", "users.png", "logout.png", "logout.png" };
-			int i = 0;
-			foreach (ItemPageMenu page in Enum.GetValues(typeof(ItemPageMenu)))
-			{
-				menuItems.Add(new ItemMenu()
-				{
-					Title = titles[i],
-					Page = page,
-					Icon = icons[i]
-				});
-				i++;
-			}
-			ListMenu.ItemsSource = menuItems;
-			ListMenu.ItemSelected += (sender, e) => {
-
-				if (e.SelectedItem == null) return;
-
-				var item = e.SelectedItem as ItemMenu;
-
-                //navigation.NavigateMenu(item.Page);
-                Page toPage = null;
-                switch (item.Page)
+            if (!(ListMenu.ItemsSource is ObservableCollection<ItemMenu> checkList))
+            {
+                menuItems = new ObservableCollection<ItemMenu>();
+                string[] titles = new string[] { "Inicio", "Directorio", "Mis dependientes", "¿Necesitas ayuda?", "Salir" };
+                string[] icons = new string[] { "home.png", "book.png", "users.png", "logout.png", "logout.png" };
+                int i = 0;
+                foreach (ItemPageMenu page in Enum.GetValues(typeof(ItemPageMenu)))
                 {
-                    case ItemPageMenu.Directory:
-                        toPage = new DirectoryPage();
-                        Navigation.PushAsync(toPage);
-                        break;
-                    case ItemPageMenu.MyEarrings:
-                        toPage = new DependtsPage();
-                        Navigation.PushAsync(toPage);
-                        break;
-                    case ItemPageMenu.NeedHelp:
-                        ShowNeedHelpInfo();
-                        break;
-                    case ItemPageMenu.Exit:
-                        Helpers.UserHelper.Logout();
-                        App.Master.ChangeRootPage(new LogInPage());
-                        break;
-                    case ItemPageMenu.Home:
-                        App.Master.ChangeRootPage(new HomePage());
-                        break;
-                    default:
-                        break;
+                    menuItems.Add(new ItemMenu()
+                    {
+                        Title = titles[i],
+                        Page = page,
+                        Icon = icons[i]
+                    });
+                    i++;
                 }
+                ListMenu.ItemsSource = menuItems;
+                ListMenu.ItemSelected += (sender, e) =>
+                {
 
-				foreach (var n in menuItems) n.Selected = false;
-				item.Selected = true;
-				ListMenu.ItemsSource = new ObservableCollection<ItemMenu>(menuItems);
-				ListMenu.SelectedItem = null;
+                    if (e.SelectedItem == null) return;
 
-                _master.IsPresented = false;
-			};
-		}
+                    var item = e.SelectedItem as ItemMenu;
 
-        void ShowNeedHelpInfo()
+                    //navigation.NavigateMenu(item.Page);
+                    Page toPage = null;
+                    switch (item.Page)
+                    {
+                        case ItemPageMenu.Directory:
+                            toPage = new DirectoryPage();
+                            Navigation.PushAsync(toPage);
+                            break;
+                        case ItemPageMenu.MyEarrings:
+                            toPage = new DependtsPage();
+                            Navigation.PushAsync(toPage);
+                            break;
+                        case ItemPageMenu.NeedHelp:
+                            ShowNeedHelpInfo();
+                            break;
+                        case ItemPageMenu.Exit:
+                            Helpers.UserHelper.Logout();
+                            App.Master.ChangeRootPage(new LogInPage());
+                            break;
+                        case ItemPageMenu.Home:
+                            App.Master.ChangeRootPage(new HomePage());
+                            break;
+                        default:
+                            break;
+                    }
+
+                    foreach (var n in menuItems) n.Selected = false;
+                    item.Selected = true;
+                    ListMenu.ItemsSource = new ObservableCollection<ItemMenu>(menuItems);
+                    ListMenu.SelectedItem = null;
+
+                    _master.IsPresented = false;
+                };
+            }
+        }
+
+        async void ShowNeedHelpInfo()
         {
             try
             {
-                Device.OpenUri(new Uri("whatsapp://send?phone=5218110056739&text="));
+                var supportsUri = await Launcher.CanOpenAsync("whatsapp://");
+                if (supportsUri)
+                {
+                    await Launcher.OpenAsync(new Uri("whatsapp://send?phone=5218110056739&text="));
+                }
+                else
+                {
+                    await DisplayAlert("Alerta", "No cuentas con la aplicación de WhatsApp en tu celular.", "Ok");
+                }
             }
             catch (Exception ex)
             {

@@ -1,5 +1,4 @@
 ﻿using Xamarin.Forms;
-using System;
 using ClubSalud.Managers;
 using ClubSalud.Pages.Master;
 using ClubSalud.Pages.Session;
@@ -48,18 +47,6 @@ namespace ClubSalud
         public void ChangeToRootPage()
         {
             MainPage = new NavigationPage(new MasterPage());
-        }
-
-        
-        
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
         }
     }
 }

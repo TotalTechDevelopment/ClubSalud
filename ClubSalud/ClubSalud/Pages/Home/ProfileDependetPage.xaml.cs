@@ -37,10 +37,10 @@ namespace ClubSalud.Pages.Home
             var dependent = Helpers.DependentHelper.CurrentDependent;
             var culture = new System.Globalization.CultureInfo("es-MX");
             var date = DateTime.Now;
-            _LabelFecha.Text = culture.DateTimeFormat.GetDayName(date.DayOfWeek) + ", " + culture.DateTimeFormat.GetMonthName(date.Month) + " de " + date.ToString("MMMM") + " del " + date.Year;
+            _LabelFecha.Text = culture.DateTimeFormat.GetDayName(date.DayOfWeek) + $" {date:dd} de " + culture.DateTimeFormat.GetMonthName(date.Month) + " del " + date.Year;
             _DependentName.Text = dependent.Nombre;
-            var lastNameP = AppViewUtils.RemoveWhiteSpaces(dependent.Apellido_Paterno);
-            var lastNameM = AppViewUtils.RemoveWhiteSpaces(dependent.Apellido_Materno);
+            var lastNameP = !string.IsNullOrEmpty(dependent.Apellido_Paterno) ? AppViewUtils.RemoveWhiteSpaces(dependent.Apellido_Paterno) : string.Empty;
+            var lastNameM = !string.IsNullOrEmpty(dependent.Apellido_Materno) ? AppViewUtils.RemoveWhiteSpaces(dependent.Apellido_Materno) : string.Empty;
             _LastName.Text = lastNameP + " " + lastNameM;
 			_Member.Text = App.CurrentUser.Numero_de_Seguro;
 			_Vigencia.Text = App.CurrentUser.VigenciaFormatted;

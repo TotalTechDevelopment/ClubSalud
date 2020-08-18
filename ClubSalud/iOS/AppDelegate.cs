@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using FFImageLoading.Transformations;
+﻿using FFImageLoading.Transformations;
 using Foundation;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using UIKit;
 
 namespace ClubSalud.iOS
@@ -12,15 +12,12 @@ namespace ClubSalud.iOS
     {
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
-
-            LoadApplication(new App());
-
+            Rg.Plugins.Popup.Popup.Init();
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
-			var dummy = new FFImageLoading.Forms.Platform.CachedImageRenderer();
-			var ignore = new CircleTransformation();
-
+            AppCenter.Start("c19f239d-176c-4d7e-8ad6-d7dfa43c0a87",
+                               typeof(Analytics), typeof(Crashes));
+            LoadApplication(new App());
             return base.FinishedLaunching(app, options);
         }
     }

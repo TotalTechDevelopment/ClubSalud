@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using ClubSalud.Managers;
 using ClubSalud.Models.Home;
 using Xamarin.Forms;
-using ClubSalud.Models.Menu;
 using FFImageLoading.Forms;
 using FFImageLoading.Transformations;
 using ClubSalud.Providers;

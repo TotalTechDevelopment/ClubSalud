@@ -6,7 +6,6 @@ using Xamarin.Forms.Xaml;
 
 namespace ClubSalud.PopUps
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PrivacyPolicy : Rg.Plugins.Popup.Pages.PopupPage
     {
         public PrivacyPolicy()
