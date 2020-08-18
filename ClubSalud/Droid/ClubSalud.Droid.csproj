@@ -35,8 +35,9 @@
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidKeyStore>false</AndroidKeyStore>
     <AndroidSigningKeyStore>/Users/pro/Downloads/Telegram Desktop/ArchivosTT/TTKeys/totaltech.keystore</AndroidSigningKeyStore>
-    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidSupportedAbis>arm64-v8a;x86;x86_64;armeabi-v7a</AndroidSupportedAbis>
+<AndroidUseAapt2>false</AndroidUseAapt2>
+<AndroidLinkTool>r8</AndroidLinkTool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,12 +48,12 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a</AndroidSupportedAbis>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidKeyStore>True</AndroidKeyStore>
     <AndroidSigningKeyStore>/Users/alexdev/Downloads/ArchivosTT/TTKeys/totaltech.keystore</AndroidSigningKeyStore>
     <AndroidUseAapt2>true</AndroidUseAapt2>
-    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+    <AndroidLinkTool>r8</AndroidLinkTool>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
