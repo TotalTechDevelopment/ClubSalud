@@ -276,29 +276,38 @@ namespace ClubSalud
             }
         }
 
-        void TapedChangePicture(object sender, EventArgs e)
+        private bool isNavigation = false;
+
+        async void TapedChangePicture(object sender, EventArgs e)
         {
             try
             {
-				var stackItem = (StackLayout)sender;
-				var textItem = (Label)stackItem.Children[1];
-				var dependentName = textItem.Text;
+                if (!isNavigation)
+                {
+                    isNavigation = true;
+                    var stackItem = (StackLayout)sender;
+                    var textItem = (Label)stackItem.Children[1];
+                    var dependentName = textItem.Text;
 
-				var dependent = ListaDependientes.Where(x => x.Nombre.Equals(dependentName)).FirstOrDefault();
+                    var dependent = ListaDependientes.Where(x => x.Nombre.Equals(dependentName)).FirstOrDefault();
 
-				if (dependent != null)
-				{
-                    Helpers.DependentHelper.CurrentDependent = dependent;
-                    var dependetPosition = ListaDependientes.IndexOf(dependent);
-                    Helpers.DependentHelper.CurrentDependentPosition = dependetPosition;
+                    if (dependent != null)
+                    {
+                        Helpers.DependentHelper.CurrentDependent = dependent;
+                        var dependetPosition = ListaDependientes.IndexOf(dependent);
+                        Helpers.DependentHelper.CurrentDependentPosition = dependetPosition;
 
-                    //navigation.NavigatePages(ItemPage.ProfileDependent);
-                    App.Master.Navigation.PushAsync(new ProfileDependetPage());
-				}
+                        //navigation.NavigatePages(ItemPage.ProfileDependent);
+                        await App.Master.Navigation.PushAsync(new ProfileDependetPage());
+                        isNavigation = false;
+                    }
+                }
+				
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
+                isNavigation = false;
             }
 
         }

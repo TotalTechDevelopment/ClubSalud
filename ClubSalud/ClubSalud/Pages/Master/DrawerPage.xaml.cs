@@ -167,19 +167,12 @@ namespace ClubSalud.Pages.Master
         {
             try
             {
-                var supportsUri = await Launcher.CanOpenAsync("whatsapp://");
-                if (supportsUri)
-                {
-                    await Launcher.OpenAsync(new Uri("whatsapp://send?phone=5218110056739&text="));
-                }
-                else
-                {
-                    await DisplayAlert("Alerta", "No cuentas con la aplicación de WhatsApp en tu celular.", "Ok");
-                }
+                Device.OpenUri(new Uri("whatsapp://send?phone=5218110056739"));
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                await DisplayAlert("Alerta", "No cuentas con la aplicación de WhatsApp en tu celular.", "Ok");
+
             }
         }
 

@@ -7,6 +7,9 @@ using Android.Runtime;
 using Android.OS;
 using Android.Support.V4.App;
 using Plugin.Permissions;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace ClubSalud.Droid
 {
@@ -23,7 +26,8 @@ namespace ClubSalud.Droid
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             Xamarin.Essentials.Platform.Init(this, bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
-
+            AppCenter.Start("9c3e7055-3ddf-416c-ab40-4128a45e261c",
+                   typeof(Analytics), typeof(Crashes));
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.M)
             {
                 int mycode = 0;
